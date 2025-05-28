@@ -1,0 +1,156 @@
+.react-datepicker {
+  font-family: "Kaisei Opti", serif;
+  font-size: 1em;
+  background-color: #fffdfa;
+  border: 1px solid #f75a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.react-datepicker__header {
+  background-color: antiquewhite;
+  padding-top: 1.4em;
+  border-bottom: none;
+}
+
+.react-datepicker__day-name {
+  padding: 0.4em;
+  margin: 0.3em;
+}
+
+.react-datepicker__day {
+  color: #474747;
+  padding: 0.5em;
+  margin: 0.2em;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.react-datepicker__day:hover {
+  background-color: #f0f0f0;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #f75a1a;
+  color: #fffdfa;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+
+}
+
+.react-datepicker__day.react-datepicker__day--selected:hover,
+.react-datepicker__day.react-datepicker__day--keyboard-selected:hover {
+  background-color: #ff7a3d;
+  color: #fffdfa;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.react-datepicker__day--today {
+  font-weight: normal;
+}
+
+
+.react-datepicker__navigation {
+  top: 0.7em;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.2rem;
+}
+
+/* 前月（左）矢印 */
+.react-datepicker__navigation--previous {
+  left: 0.7em;
+}
+
+/* 次月（右）矢印 */
+.react-datepicker__navigation--next {
+  right: 0.7em;
+}
+
+/* 矢印にマウスを乗せたときの効果 */
+.react-datepicker__navigation:hover {
+  background-color: antiquewhite;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: #f75a1a;
+  transition: border-color 0.2s ease;
+}
+.react-datepicker__navigation:hover .react-datepicker__navigation-icon::before {
+  border-color: #ff7a3d;
+}
+.react-datepicker__current-month {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #474747;
+  height: 0.5em;
+}
+
+.custom-input-button {
+  background-color: #fffdfa;
+  border: 1px solid #f75a1a;
+  border-radius: 6px;
+  padding: 0.4em 1em;
+  color: #474747;
+  font-size: 1em;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+
+.custom-input-button:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fffdfa;
+  border-color: #ff7a3d;
+}
+
+/* 三角マークを非表示にする */
+.react-datepicker__triangle {
+  display: none;
+}
+
+
+/* DatePickerAnimation.css */
+.calendar-animate {
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  background-color: #fffdfa;
+  border: 1px solid #f75a1a;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.fade-in {
+  animation-name: fadeIn;
+}
+
+.fade-out {
+  animation-name: fadeOut;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
