@@ -136,14 +136,14 @@ const SearchFilter = () => {
   const customStyles = {
     container: (provided) => ({
       ...provided,
-      width: '115px', // 幅を少し小さく
+      width: '120px',
     }),
     control: (provided, state) => ({
       ...provided,
-      minHeight: '30px',  // 高さを小さく
+      minHeight: '30px',
       height: '35px',
-      fontSize: '1em',   // フォントサイズを小さく
-      padding: '0 px',   // パディングも小さく
+      fontSize: '1em',
+      padding: '0 px',
       borderRadius: '6px',
       border: '1px solid #F75A1A',
       transition: 'transform 0.2s ease, box-shadow 0.2s ease',
@@ -153,14 +153,14 @@ const SearchFilter = () => {
         backgroundColor: '#f0f0f0'
       },
       ...(state.isFocused && {
-        backgroundColor: '#fffdfa', // フォーカス時でも青くしない
+        backgroundColor: '#fffdfa',
         borderColor: '#F75A1A',
         boxShadow: 'none',
       }),
     }),
     indicatorsContainer: (provided) => ({
       ...provided,
-      height: '30px', // 高さを合わせる
+      height: '30px',
     }),
     dropdownIndicator: (provided) => ({
       ...provided,
@@ -181,9 +181,9 @@ const SearchFilter = () => {
       fontSize: '1rm',
       padding: '8px',
       backgroundColor: state.isSelected
-        ? '#fffdfa'         // 選択されていても青くしない
+        ? '#fffdfa'
         : state.isFocused
-          ? '#f0f0f0'         // フォーカス時もカスタム色に
+          ? '#f0f0f0'
           : '#fffdfa',
       color: '#333',
       cursor: 'pointer',
