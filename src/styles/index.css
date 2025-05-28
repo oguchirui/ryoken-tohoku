@@ -627,9 +627,9 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
-/* 透明度だけでなく scaleも変える */
 .modal-content {
   background: #fffdfa;
   padding: 20px;
@@ -641,8 +641,9 @@ button:hover {
   overflow: auto;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   transform-origin: center center;
+  z-index: 1000;
 }
-/* close button */
+
 .close-button {
   position: absolute;
   top: 10px;
@@ -659,9 +660,8 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
 }
-
-
 .close-button:hover {
   color: #474747;
   background-color: #fffdfa;
