@@ -22,7 +22,6 @@ const KebabMenu = ({ record }) => {
     deleteModalDispatch({
       type: 'open',
       payload: record
-
     });
     setMenuOpen(false);
   };

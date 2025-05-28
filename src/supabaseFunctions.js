@@ -95,6 +95,17 @@ export const fetchPassword = async () => {
   return data.password;
 };
 
+export const updatePassword = async (newPassword) => {
+  const { error } = await supabase
+    .from("password_table")
+    .update({ password: newPassword })
+    .eq('id', 1);
+
+  if (error) {
+    throw new Error(`Error updating password: ${error.message}`);
+  }
+};
+
 export const insertRecord = async (record) => {
   const { error } = await supabase
     .from('activity_logs')

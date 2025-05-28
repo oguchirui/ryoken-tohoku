@@ -8,7 +8,7 @@ const EditButton = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [inputPassword, setInputPassword] = useState("");
   const [isCorrect, setIsCorrect] = useState(true);
-  const [isPasswordChecked, setIsPasswordChecked] = useState(false);
+  const [modalStep, setModalStep] = useState(0); // modalStep: 0 - パスワード入力, 1 - 完了メッセージ
 
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ const EditButton = (props) => {
     setTimeout(() => {
       setInputPassword("");
       setIsCorrect(true);
-      setIsPasswordChecked(false);
+      setModalStep(0);
     }, 200);
   };
 
@@ -65,18 +65,13 @@ const EditButton = (props) => {
 
     // パスワードチェックと記録処理
   const handleCheckPassword = async () => {
-    if (!isPasswordChecked) {
-      const correctPassword = await fetchPassword();
-      if (inputPassword === correctPassword) {
-        await updateRecord(record, oldId);
-        setIsCorrect(true);
-        setIsPasswordChecked(true);
-      } else {
-        setIsCorrect(false);
-      }
+    const correctPassword = await fetchPassword();
+    if (inputPassword === correctPassword) {
+      await updateRecord(record, oldId);
+      setIsCorrect(true);
+      setModalStep(1);
     } else {
-      // 閉じるボタンを押した時
-      closeModalAndNavigate();
+      setIsCorrect(false);
     }
   };
 
@@ -91,7 +86,7 @@ const EditButton = (props) => {
 
       <Modal isOpen={isModalOpen} onClose={closeModalOnly}>
         <div className="password-check-container">
-          {!isPasswordChecked && (
+          {modalStep === 0 && (
             <div className="password-check">
               <h2>パスワードを入力してください。</h2>
               <form
@@ -130,10 +125,10 @@ const EditButton = (props) => {
             </div>
           )}
 
-          {isPasswordChecked && (
+          {modalStep === 1 && (
             <div className="password-check">
               <h2>更新が完了しました。</h2>
-              <button onClick={handleCheckPassword}>
+              <button onClick={closeModalAndNavigate}>
                 ホームに戻る
               </button>
             </div>

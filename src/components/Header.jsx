@@ -1,8 +1,11 @@
 import { useEffect, useRef } from 'react'
+import { useChangePasswordDispatch } from '../context/ChangePasswordContext';
 import ToAboutPageButton from "./ToAboutPageButton";
 
 const Header = () => {
   const headerRef = useRef(null);
+
+  const changePasswordDispatch = useChangePasswordDispatch();
 
   useEffect(() => {
     const adjustBodyMargin = () => {
@@ -20,14 +23,16 @@ const Header = () => {
     };
   }, []);
 
+  const handleChangePassword = () => {
+    changePasswordDispatch({ type: 'open' });
+  };
+
   return (
     <header className="header" ref={headerRef}>
       <h1 className="header-title">東北大学 旅行研究会 活動記録</h1>
       <nav className="nav">
         <ToAboutPageButton />
-        <button>
-          パスワード再設定
-        </button>
+        <button onClick={handleChangePassword}>パスワード再設定</button>
       </nav>
     </header>
   );

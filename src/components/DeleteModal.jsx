@@ -7,7 +7,7 @@ import { fetchPassword, deleteRecord, fetchClickedRecords } from "../supabaseFun
 const DeleteModal = () => {
   const [inputPassword, setInputPassword] = useState("");
   const [isCorrect, setIsCorrect] = useState(true);
-  const [isPasswordChecked, setIsPasswordChecked] = useState(false);
+  const [modalStep, setModalStep] = useState(0); // modalStep: 0 - パスワード入力, 1 - 完了メッセージ
 
   const mapDispatch = useMapDispatch();
 
@@ -15,19 +15,18 @@ const DeleteModal = () => {
   const deleteModalDispatch = useDeleteModalDispatch();
 
 
-  // 閉じるボタンorバツボタン押下時に状態リセット＆/homeへ遷移
-  const closeModalAndNavigate = () => {
+  // 閉じるボタンorバツボタン押下時に状態リセット
+  const closeModal = () => {
     deleteModalDispatch({ type: "close" });
     setTimeout(() => {
       setInputPassword("");
       setIsCorrect(true);
-      setIsPasswordChecked(false);
+      setModalStep(0);
     }, 200);
   };
 
-    // パスワードチェックと記録処理
+    // パスワードチェックと削除処理
   const handleCheckPassword = async () => {
-    if (!isPasswordChecked) {
       const correctPassword = await fetchPassword();
       if (inputPassword === correctPassword) {
         deleteRecord(recordToDelete.id).then(() => {
@@ -40,20 +39,16 @@ const DeleteModal = () => {
           deleteModalDispatch({ type: "delete" });
         });
         setIsCorrect(true);
-        setIsPasswordChecked(true);
+        setModalStep(1);
       } else {
         setIsCorrect(false);
       }
-    } else {
-      // 閉じるボタンを押した時
-      closeModalAndNavigate();
-    }
   };
 
   return (
-    <Modal isOpen={isModalOpen} onClose={closeModalAndNavigate}>
+    <Modal isOpen={isModalOpen} onClose={closeModal}>
       <div className="password-check-container">
-        {!isPasswordChecked && (
+        {modalStep === 0 && (
           <div className="password-check">
             <h2>パスワードを入力してください。</h2>
             <form
@@ -79,7 +74,8 @@ const DeleteModal = () => {
               />
               <button
                 className="submit-button"
-                type="submit">
+                type="submit"
+              >
                 OK
               </button>
             </form>
@@ -91,10 +87,10 @@ const DeleteModal = () => {
           </div>
         )}
 
-        {isPasswordChecked && (
+        {modalStep === 1 && (
           <div className="password-check">
             <h2>削除が完了しました。</h2>
-            <button onClick={handleCheckPassword}>
+            <button onClick={closeModal}>
               ホームに戻る
             </button>
           </div>
