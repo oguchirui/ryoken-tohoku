@@ -288,10 +288,10 @@ const RecordMap = () => {
       />
 
       <div className='footer-buttons'>
-        <div className='footer-buttons-item'>
+        <div className='footer-buttons-item-left'>
           <ToHomePageButton />
         </div>
-        <div className='footer-buttons-item'>
+        <div className='footer-buttons-item-errors'>
           {inputErrors.length > 0 && (
             <div className='input-errors'>
               {inputErrors.map((err, idx) => (
@@ -300,7 +300,7 @@ const RecordMap = () => {
             </div>
           )}
         </div>
-        <div className='footer-buttons-item'>
+        <div className='footer-buttons-item-right'>
           <RecordButton
             date={date}
             name={placeName}

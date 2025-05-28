@@ -549,17 +549,33 @@ button:hover {
 .footer-buttons {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.footer-buttons-item {
+.footer-buttons-item-left {
   margin: 30px;
+  margin-right: 0;
+}
+
+.footer-buttons-item-errors {
+  margin: 0;
+}
+
+.footer-buttons-item-right {
+  margin: 30px;
+  margin-left: 0;
 }
 
 .input-errors {
   color: #f75a1a;
   font-size: 1em;
+  display: flex;
 }
 
+.input-errors p {
+  margin-left: 5px;
+  margin-right: 5px;
+}
 .password-check-container {
   height: 100%;
   display: flex;
@@ -585,6 +601,7 @@ button:hover {
 
 .password-check input {
   height: 30px;
+  width: 200px;
   font-family: inherit;
   font-size: 1em;
   text-align: center;
@@ -601,7 +618,7 @@ button:hover {
 }
 
 .password-check .submit-button {
-  margin-left: 20px;
+  margin-left:10px;
 }
 
 
