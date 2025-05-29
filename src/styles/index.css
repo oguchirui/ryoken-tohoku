@@ -649,9 +649,43 @@ button:hover {
 
 
 
+/* ピンアニメーション設定 */
+@keyframes dropFromTop {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.pin-drop-animation {
+  animation: dropFromTop 0.2s ease-out;
+  transition: transform 0.2s ease;
+}
+.pin-drop-animation:hover,
+.pin-drop-animation.pin-hovered {
+  transform: scale(1.1);
+}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* モーダル設定 */
 .modal-overlay {
   position: fixed;
   inset: 0;

@@ -12,7 +12,7 @@ import { useInputErrors } from '../context/InputErrorsContext';
 
 const EditMap = () => {
   const MAP_ID = import.meta.env.VITE_MAP_ID;
-  const INITIAL_ADDRESS = '日本、〒980-0021 宮城県仙台市青葉区中央１丁目１−１';
+  const INITIAL_ADDRESS = '日本、〒980-0021 宮城県仙台市青葉区中央１丁目１';
 
   const location = useLocation();
   const oldRecord = location.state;
@@ -85,7 +85,7 @@ const EditMap = () => {
         geocoder.geocode({ address: formattedAddress }, (results, status) => {
           if (status === 'OK' && results[0]) {
             const location = results[0].geometry.location;
-            const zoomLevel = isFirstRender.current ? 7 : 13;
+            const zoomLevel = isFirstRender.current ? 7 : 15;
 
             if (!mapInstance.current) {
               mapInstance.current = new Map(mapRef.current, {
@@ -126,17 +126,57 @@ const EditMap = () => {
       }
 
       const pin = new PinElement({
-        scale: 1,
-        background: '#4285F4',
-        borderColor: '#000000',
-        glyph: '📍',
-        glyphColor: '#FFFFFF',
+        scale: 1.5,
+        background: '#ffcc4d',
+        borderColor: 'none',
+        glyph: '',
       });
+
+      pin.element.style.filter = 'drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1))';
+
+      const glyphDiv = document.createElement('div');
+      glyphDiv.style.backgroundColor = '#fffdfa';
+      glyphDiv.style.borderRadius = '50%';
+      glyphDiv.style.width = '28px';
+      glyphDiv.style.height = '28px';
+      glyphDiv.style.display = 'flex';
+      glyphDiv.style.alignItems = 'center';
+      glyphDiv.style.justifyContent = 'center';
+      glyphDiv.style.position = 'absolute';
+      glyphDiv.style.top = '6px';
+      glyphDiv.style.left = '6px';
+      glyphDiv.style.zIndex = '2';
+
+      pin.element.appendChild(glyphDiv);
+
+      pin.element.classList.add('pin-drop-animation');
 
       clickMarker = new AdvancedMarkerElement({
         position: e.latLng,
         map: mapInstance.current,
         content: pin.element,
+        zIndex: 2,
+      });
+
+      pin.element.addEventListener('mouseenter', () => {
+        marker.zIndex = 1;
+        pin.element.classList.add('pin-hovered');
+      });
+      pin.element.addEventListener('mouseleave', () => {
+        marker.zIndex = 0;
+        pin.element.classList.remove('pin-hovered');
+      });
+
+      // スマホ対応：タップしたら浮き上がる
+      pin.element.addEventListener('touchstart', () => {
+        marker.zIndex = 1000;
+        pin.element.classList.add('pin-hovered');
+
+        // 1秒後に元に戻す（必要に応じて時間調整）
+        setTimeout(() => {
+          marker.zIndex = 0;
+          pin.element.classList.remove('pin-hovered');
+        }, 200);
       });
 
       setLat(e.latLng.lat());
@@ -165,17 +205,73 @@ const EditMap = () => {
       filteredRecords.forEach((record) => {
         const pin = new PinElement({
           scale: 1.5,
-          background: '#99cc65',
-          borderColor: '#000000',
-          glyph: `${record.name_count}`,
-          glyphColor: '#000000',
+          background: '#f75a1a',
+          borderColor: 'none',
+          glyph: '',
+          glyphColor: '#474747',
         });
+
+        pin.element.style.filter = 'drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1))';
+
+        const glyphDiv = document.createElement('div');
+        glyphDiv.style.backgroundColor = '#fffdfa';
+        glyphDiv.style.borderRadius = '50%';
+        glyphDiv.style.width = '28px';
+        glyphDiv.style.height = '28px';
+        glyphDiv.style.display = 'flex';
+        glyphDiv.style.alignItems = 'center';
+        glyphDiv.style.justifyContent = 'center';
+        glyphDiv.style.position = 'absolute';
+        glyphDiv.style.top = '6px';
+        glyphDiv.style.left = '6px';
+        glyphDiv.style.zIndex = '2';
+
+        // 文字用の span を作る
+        const glyphText = document.createElement('span');
+        glyphText.textContent = `${record.name_count}`;
+        glyphText.style.fontSize = '1.8em';
+        glyphText.style.fontFamily = '"Kaisei Opti", serif';
+        glyphText.style.color = '#474747';
+        // 文字だけを少し上に移動
+        glyphText.style.position = 'relative';
+        glyphText.style.top = '-1.5px';  // ここで文字だけ上にずらす
+
+        // glyphText を glyphDiv に追加
+        glyphDiv.appendChild(glyphText);
+
+        // pin.element に追加
+        pin.element.style.position = 'relative'; // 親に relative 忘れずに
+        pin.element.appendChild(glyphDiv);
+
+        pin.element.classList.add('pin-drop-animation');
 
         const marker = new AdvancedMarkerElement({
           map: mapInstance.current,
           position: { lat: record.lat, lng: record.lng },
           content: pin.element,
           gmpClickable: true,
+          zIndex: 0,
+        });
+
+        pin.element.addEventListener('mouseenter', () => {
+          marker.zIndex = 1;
+          pin.element.classList.add('pin-hovered');
+        });
+        pin.element.addEventListener('mouseleave', () => {
+          marker.zIndex = 0;
+          pin.element.classList.remove('pin-hovered');
+        });
+
+        // スマホ対応：タップしたら浮き上がる
+        pin.element.addEventListener('touchstart', () => {
+          marker.zIndex = 1000;
+          pin.element.classList.add('pin-hovered');
+
+          // 1秒後に元に戻す（必要に応じて時間調整）
+          setTimeout(() => {
+            marker.zIndex = 0;
+            pin.element.classList.remove('pin-hovered');
+          }, 200);
         });
 
         marker.addListener('gmp-click', () => {
@@ -190,18 +286,59 @@ const EditMap = () => {
           if (clickMarker) {
             clickMarker.setMap(null);
           }
+
           const pin = new PinElement({
-            scale: 1,
-            background: '#4285F4',
-            borderColor: '#000000',
-            glyph: '📍',
-            glyphColor: '#FFFFFF',
+            scale: 1.5,
+            background: '#ffcc4d',
+            borderColor: 'none',
+            glyph: '',
           });
+
+          pin.element.style.filter = 'drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1))';
+
+          const glyphDiv = document.createElement('div');
+          glyphDiv.style.backgroundColor = '#fffdfa';
+          glyphDiv.style.borderRadius = '50%';
+          glyphDiv.style.width = '28px';
+          glyphDiv.style.height = '28px';
+          glyphDiv.style.display = 'flex';
+          glyphDiv.style.alignItems = 'center';
+          glyphDiv.style.justifyContent = 'center';
+          glyphDiv.style.position = 'absolute';
+          glyphDiv.style.top = '6px';
+          glyphDiv.style.left = '6px';
+          glyphDiv.style.zIndex = '2';
+
+          pin.element.appendChild(glyphDiv);
+
+          pin.element.classList.add('pin-drop-animation');
 
           clickMarker = new AdvancedMarkerElement({
             position: latLng,
             map: mapInstance.current,
             content: pin.element,
+            zIndex: 2,
+          });
+
+          pin.element.addEventListener('mouseenter', () => {
+            marker.zIndex = 1;
+            pin.element.classList.add('pin-hovered');
+          });
+          pin.element.addEventListener('mouseleave', () => {
+            marker.zIndex = 0;
+            pin.element.classList.remove('pin-hovered');
+          });
+
+          // スマホ対応：タップしたら浮き上がる
+          pin.element.addEventListener('touchstart', () => {
+            marker.zIndex = 1000;
+            pin.element.classList.add('pin-hovered');
+
+            // 1秒後に元に戻す（必要に応じて時間調整）
+            setTimeout(() => {
+              marker.zIndex = 0;
+              pin.element.classList.remove('pin-hovered');
+            }, 200);
           });
         });
 
@@ -215,17 +352,57 @@ const EditMap = () => {
         ]);
 
         const pin = new PinElement({
-          scale: 1,
-          background: '#4285F4',
-          borderColor: '#000000',
-          glyph: '📍',
-          glyphColor: '#FFFFFF',
+          scale: 1.5,
+          background: '#ffcc4d',
+          borderColor: 'none',
+          glyph: '',
         });
+
+        pin.element.style.filter = 'drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1))';
+
+        const glyphDiv = document.createElement('div');
+        glyphDiv.style.backgroundColor = '#fffdfa';
+        glyphDiv.style.borderRadius = '50%';
+        glyphDiv.style.width = '28px';
+        glyphDiv.style.height = '28px';
+        glyphDiv.style.display = 'flex';
+        glyphDiv.style.alignItems = 'center';
+        glyphDiv.style.justifyContent = 'center';
+        glyphDiv.style.position = 'absolute';
+        glyphDiv.style.top = '6px';
+        glyphDiv.style.left = '6px';
+        glyphDiv.style.zIndex = '2';
+
+        pin.element.appendChild(glyphDiv);
+
+        pin.element.classList.add('pin-drop-animation');
 
         clickMarker = new AdvancedMarkerElement({
           position: { lat: oldLat, lng: oldLng },
           map: mapInstance.current,
           content: pin.element,
+          zIndex: 2,
+        });
+
+        pin.element.addEventListener('mouseenter', () => {
+          marker.zIndex = 1;
+          pin.element.classList.add('pin-hovered');
+        });
+        pin.element.addEventListener('mouseleave', () => {
+          marker.zIndex = 0;
+          pin.element.classList.remove('pin-hovered');
+        });
+
+        // スマホ対応：タップしたら浮き上がる
+        pin.element.addEventListener('touchstart', () => {
+          marker.zIndex = 1000;
+          pin.element.classList.add('pin-hovered');
+
+          // 1秒後に元に戻す（必要に応じて時間調整）
+          setTimeout(() => {
+            marker.zIndex = 0;
+            pin.element.classList.remove('pin-hovered');
+          }, 200);
         });
       };
 
