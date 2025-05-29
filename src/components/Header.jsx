@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useChangePasswordDispatch } from '../context/ChangePasswordContext';
+import { useSetHeaderHeight } from '../context/HeaderHeightContext';
 import ToAboutPageButton from "./ToAboutPageButton";
 
 const Header = () => {
@@ -10,10 +11,13 @@ const Header = () => {
 
   const changePasswordDispatch = useChangePasswordDispatch();
 
+  const setHeaderHeight = useSetHeaderHeight();
+
   useEffect(() => {
     const adjustBodyMargin = () => {
       if (headerRef.current) {
         const headerHeight = headerRef.current.offsetHeight;
+        setHeaderHeight(headerHeight);
         document.body.style.marginTop = `${headerHeight + 30}px`;
       }
     };

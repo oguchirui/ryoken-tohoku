@@ -2,6 +2,7 @@ import { APILoader } from '@googlemaps/extended-component-library/react'
 import { MapProvider } from './context/MapContext'
 import { ChangePasswordProvider } from './context/ChangePasswordContext'
 import { InputErrorsProvider } from './context/InputErrorsContext'
+import { HeaderHeightProvider } from './context/HeaderHeightContext'
 import { BrowserRouter } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop'
 import ResetInputErrors from './components/ResetInputErrors'
@@ -17,13 +18,15 @@ const App = () => {
       <MapProvider>
         <ChangePasswordProvider>
           <InputErrorsProvider>
-            <BrowserRouter>
-              <ScrollToTop />
-              <ResetInputErrors />
-              <ChangePasswordModal />
-              <Header />
-              <Router />
-            </BrowserRouter>
+            <HeaderHeightProvider>
+              <BrowserRouter>
+                <ScrollToTop />
+                <ResetInputErrors />
+                <ChangePasswordModal />
+                <Header />
+                <Router />
+              </BrowserRouter>
+            </HeaderHeightProvider>
           </InputErrorsProvider>
         </ChangePasswordProvider>
       </MapProvider>
