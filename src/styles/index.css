@@ -58,7 +58,8 @@ h1 {
   line-height: 1.1;
   margin: 0.4em 0;
   text-align: left;
-  padding-left: 40px;
+  margin-left: 40px;
+  cursor: pointer;
 }
 
 .nav {

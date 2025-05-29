@@ -1,9 +1,12 @@
 import { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { useChangePasswordDispatch } from '../context/ChangePasswordContext';
 import ToAboutPageButton from "./ToAboutPageButton";
 
 const Header = () => {
   const headerRef = useRef(null);
+
+  const navigate = useNavigate();
 
   const changePasswordDispatch = useChangePasswordDispatch();
 
@@ -29,7 +32,13 @@ const Header = () => {
 
   return (
     <header className="header" ref={headerRef}>
-      <h1 className="header-title">東北大学 旅行研究会 活動記録</h1>
+      <h1
+        className="header-title"
+        onClick={() => {
+          navigate('/');
+        }}>
+        東北大学 旅行研究会 活動記録
+      </h1>
       <nav className="nav">
         <ToAboutPageButton />
         <button onClick={handleChangePassword}>パスワード再設定</button>
