@@ -64,7 +64,6 @@ const RecordButton = (props) => {
     const correctPassword = await fetchPassword();
     if (inputPassword === correctPassword) {
       await insertRecord(record);
-      setIsCorrect(true);
       setModalStep(1);
     } else {
       setIsCorrect(false);
@@ -96,6 +95,7 @@ const RecordButton = (props) => {
                   autoComplete="username"
                   hidden
                 />
+
                 <input
                   type="password"
                   autoComplete="current-password"
@@ -106,6 +106,13 @@ const RecordButton = (props) => {
                     setIsCorrect(true); // パスワード入力時にエラーメッセージをリセット
                   }}
                 />
+
+                {!isCorrect && (
+                  <p>
+                    パスワードが間違っています。
+                  </p>
+                )}
+
                 <button
                   className="submit-button"
                   type="submit"
@@ -113,11 +120,6 @@ const RecordButton = (props) => {
                   OK
                 </button>
               </form>
-              {!isCorrect && (
-                <p>
-                  パスワードが間違っています。
-                </p>
-              )}
             </div>
           )}
 

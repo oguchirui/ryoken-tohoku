@@ -68,7 +68,6 @@ const EditButton = (props) => {
     const correctPassword = await fetchPassword();
     if (inputPassword === correctPassword) {
       await updateRecord(record, oldId);
-      setIsCorrect(true);
       setModalStep(1);
     } else {
       setIsCorrect(false);
@@ -100,6 +99,7 @@ const EditButton = (props) => {
                   autoComplete="username"
                   hidden
                 />
+
                 <input
                   type="password"
                   autoComplete="current-password"
@@ -110,6 +110,13 @@ const EditButton = (props) => {
                     setIsCorrect(true); // パスワード入力時にエラーメッセージをリセット
                   }}
                 />
+
+                {!isCorrect && (
+                  <p>
+                    パスワードが間違っています。
+                  </p>
+                )}
+                
                 <button
                   className="submit-button"
                   type="submit"
@@ -117,11 +124,6 @@ const EditButton = (props) => {
                   OK
                 </button>
               </form>
-              {!isCorrect && (
-                <p>
-                  パスワードが間違っています。
-                </p>
-              )}
             </div>
           )}
 

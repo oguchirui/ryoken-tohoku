@@ -38,7 +38,6 @@ const DeleteModal = () => {
           });
           deleteModalDispatch({ type: "delete" });
         });
-        setIsCorrect(true);
         setModalStep(1);
       } else {
         setIsCorrect(false);
@@ -62,6 +61,7 @@ const DeleteModal = () => {
                 autoComplete="username"
                 hidden
               />
+
               <input
                 type="password"
                 autoComplete="current-password"
@@ -72,6 +72,13 @@ const DeleteModal = () => {
                   setIsCorrect(true); // パスワード入力時にエラーメッセージをリセット
                 }}
               />
+
+              {!isCorrect && (
+                <p>
+                  パスワードが間違っています。
+                </p>
+              )}
+              
               <button
                 className="submit-button"
                 type="submit"
@@ -79,11 +86,6 @@ const DeleteModal = () => {
                 OK
               </button>
             </form>
-            {!isCorrect && (
-              <p>
-                パスワードが間違っています。
-              </p>
-            )}
           </div>
         )}
 
