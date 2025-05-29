@@ -636,19 +636,6 @@ button:hover {
   padding: 0.6em 2em;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ピンアニメーション設定 */
 @keyframes dropFromTop {
   0% {
@@ -670,10 +657,44 @@ button:hover {
   transform: scale(1.1);
 }
 
+.about-page {
+  display: flex;
+}
 
+.about-page nav {
+  width: 200px;
+  position: sticky;
+  top: 0;
+  border: #f75a1a solid 1px;
+  border-radius: 8px;
+  background-color: antiquewhite;
+  padding: 0 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
+.about-page ul {
+  list-style: none;
+  padding: 0;
+}
 
+.about-content {
+  flex: 1;
+  margin-left: 60px;
+  display: flex;
+  flex-direction: column;
+}
 
+.about-content h2 {
+  text-align: left;
+  padding-left: 20px;
+  font-size: 2em;
+  border-bottom: #f75a1a solid 1px;
+}
+
+.about-content p {
+  text-align: left;
+  padding: 0 20px;
+}
 
 
 
