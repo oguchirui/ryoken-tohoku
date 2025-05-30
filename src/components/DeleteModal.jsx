@@ -56,11 +56,12 @@ const DeleteModal = () => {
                 handleCheckPassword();
               }}
             >
-              {/* <input
+              <input
                 type="text"
                 autoComplete="username"
+                value="ID"
                 hidden
-              /> */}
+              />
 
               <input
                 type="password"

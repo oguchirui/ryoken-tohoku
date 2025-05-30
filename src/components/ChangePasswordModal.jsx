@@ -67,11 +67,12 @@ const ChangePasswordModal = () => {
                 handleCheckPassword();
               }}
             >
-              {/* <input
+              <input
                 type="text"
                 autoComplete="username"
+                value="ID"
                 hidden
-              /> */}
+              />
 
               <input
                 type="password"
@@ -109,6 +110,13 @@ const ChangePasswordModal = () => {
                 handleUpdatePassword();
               }}
             >
+
+              <input
+                type="text"
+                autoComplete="username"
+                value="ID"
+                hidden
+              />
 
               <input
                 type="password"
