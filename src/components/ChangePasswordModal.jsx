@@ -67,11 +67,11 @@ const ChangePasswordModal = () => {
                 handleCheckPassword();
               }}
             >
-              <input
+              {/* <input
                 type="text"
                 autoComplete="username"
                 hidden
-              />
+              /> */}
 
               <input
                 type="password"
