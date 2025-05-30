@@ -60,6 +60,7 @@ h1 {
   text-align: left;
   margin-left: 40px;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 h1:hover {
   color: black;
@@ -712,10 +713,11 @@ button:hover {
   background: none;
   border-radius: 0;
   color: #474747;
+  transition: font-weight 0.2s ease;
 }
 .toc-item button:hover {
   box-shadow: none;
-  color: black;
+  font-weight: bold;
 }
 
 .about-section-container {
