@@ -681,13 +681,22 @@ button:hover {
 }
 
 .toc h2 {
-  margin-bottom: 0;
+  margin: 0;
+  margin-top: 20px;
 }
 
 .toc-list {
   list-style: none;
-  margin-top: 0;
   padding: 0;
+}
+
+.toc-list.depth-1 {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.toc-list.depth-2 {
+  padding-left: 20px;
 }
 
 .toc-divider {
@@ -709,18 +718,18 @@ button:hover {
   color: black;
 }
 
-.about-content {
+.about-section-container {
   flex: 1;
   margin-left: 30px;
   display: flex;
   flex-direction: column;
 }
 
-.about-content-section {
+.about-section {
   margin-bottom: 30px;
 }
 
-.about-content-section h2 {
+.heading.depth-1 {
   text-align: left;
   margin-top: 0;
   padding-left: 20px;
@@ -728,12 +737,22 @@ button:hover {
   border-bottom: #f75a1a solid 1px;
 }
 
-.about-content-section p {
+.heading.depth-2 {
+  text-align: left;
+  margin-top: 0;
+  margin-bottom : 10px;
+  padding-left: 30px;
+  font-size: 1.5em;
+}
+
+.about-section p {
   text-align: left;
   padding: 0 20px;
 }
 
-
+.about-content.depth-2 {
+  margin-left: 10px;
+}
 
 
 

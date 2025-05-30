@@ -18,23 +18,29 @@ const TableOfContents = ({ sections }) => {
     }
   };
 
+  const renderList = (items, depth = 1) => (
+    <ul className={`toc-list depth-${depth}`}>
+      {items.map((item, index) => (
+        <div key={item.id}>
+          {index !== 0 && <div className="toc-divider" />}
+          <li className={`toc-item depth-${depth}`}>
+            <button
+              onClick={() => scrollToSection(item.id)}>
+              {item.title}
+            </button>
+            {item.children && <div className="toc-divider" />}
+            {item.children && renderList(item.children, depth + 1)}
+          </li>
+        </div>
+      ))}
+    </ul>
+  )
+
   return (
     <div className="toc-container" style={{ top: `${headerHeight + 30}px` }}>
       <nav className="toc">
         <h2>目次</h2>
-        <ul className="toc-list">
-          {sections.map((section, index) => (
-            <div key={section.id}>
-              {index !== 0 && <div className="toc-divider" />}
-              <li className="toc-item">
-                <button
-                  onClick={() => scrollToSection(section.id)}>
-                  {section.title}
-                </button>
-              </li>
-            </div>
-          ))}
-        </ul>
+        {renderList(sections)}
       </nav>
       <ToHomePageButton />
     </div>
