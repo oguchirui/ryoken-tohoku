@@ -31,6 +31,7 @@ const AnimatedSelect = ({ ...props }) => {
   return (
     <Select
       {...props}
+      isSearchable={false}
       menuIsOpen={menuOpen}
       onMenuOpen={handleMenuOpen}
       onMenuClose={handleMenuClose}

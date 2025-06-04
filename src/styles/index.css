@@ -22,15 +22,6 @@
   text-align: center;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   place-items: center;
@@ -62,9 +53,6 @@ h1 {
   cursor: pointer;
   transition: color 0.2s ease;
 }
-h1:hover {
-  color: black;
-}
 
 .nav {
   display: flex;
@@ -91,13 +79,7 @@ button {
   color: #ffffff;
   background-color: #f75a1a;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease,
-    background-color 0.2s ease;
-}
-
-button:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: #ff7a3d;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .search-filter {
@@ -129,9 +111,6 @@ button:hover {
   color: #474747;
   border: #f75a1a solid 1px;
 }
-.search-filter-row-reset button:hover {
-  background-color: #f0f0f0;
-}
 
 .search-filter-item {
   display: flex;
@@ -157,11 +136,6 @@ button:hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   outline: none;
   width: 50px;
-}
-
-.search-filter-input:hover {
-  border-color: #ff7a3d;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .search-filter-item h2 {
@@ -243,9 +217,6 @@ button:hover {
   height: 30px;
   border-radius: 8px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.place-picker:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .map {
@@ -408,9 +379,6 @@ button:hover {
   background-color: #fffdfa;
   color: #474747;
 }
-.contents-item .menu-options button:hover {
-  background-color: #f0f0f0;
-}
 
 .contents-item .menu-options .divider {
   display: block;
@@ -522,10 +490,6 @@ button:hover {
   width: 100%;
   max-width: 200px;
 }
-.place-input:hover {
-  border-color: #ff7a3d;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
 
 .place-input-description {
   margin-left: 20px;
@@ -545,10 +509,6 @@ button:hover {
   border: #f75a1a solid 1px;
   outline: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.date-place-item textarea:hover {
-  border-color: #ff7a3d;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .footer-buttons {
@@ -627,10 +587,6 @@ button:hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   outline: none;
 }
-.password-check input:hover {
-  border-color: #ff7a3d;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
 
 .confirm-password-input {
   margin-top: 10px;
@@ -656,10 +612,6 @@ button:hover {
 .pin-drop-animation {
   animation: dropFromTop 0.2s ease-out;
   transition: transform 0.2s ease;
-}
-.pin-drop-animation:hover,
-.pin-drop-animation.pin-hovered {
-  transform: scale(1.1);
 }
 
 .about-page {
@@ -715,10 +667,6 @@ button:hover {
   color: #474747;
   transition: font-weight 0.2s ease;
 }
-.toc-item button:hover {
-  box-shadow: none;
-  font-weight: bold;
-}
 
 .about-section-container {
   flex: 1;
@@ -760,16 +708,7 @@ button:hover {
 .about-img {
   max-width: 70%;
   border-radius: 8px;
-  /* border: #f75a1a solid 1px; */
 }
-
-
-
-
-
-
-
-
 
 /* モーダル設定 */
 .modal-overlay {
@@ -814,7 +753,82 @@ button:hover {
   justify-content: center;
   z-index: 1000;
 }
-.close-button:hover {
-  color: #474747;
-  background-color: #fffdfa;
+
+@media (hover: hover) {
+  h1:hover {
+    color: black;
+  }
+
+  button:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ff7a3d;
+  }
+
+  .search-filter-row-reset button:hover {
+    background-color: #f0f0f0;
+  }
+
+  .search-filter-input:hover {
+    border-color: #ff7a3d;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .place-picker:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .contents-item .menu-options button:hover {
+    background-color: #f0f0f0;
+  }
+
+  .place-input:hover {
+    border-color: #ff7a3d;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .date-place-item textarea:hover {
+    border-color: #ff7a3d;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .password-check input:hover {
+    border-color: #ff7a3d;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .pin-drop-animation:hover,
+  .pin-drop-animation.pin-hovered {
+    transform: scale(1.1);
+  }
+
+  .toc-item button:hover {
+    box-shadow: none;
+    font-weight: bold;
+  }
+
+  .close-button:hover {
+    color: #474747;
+    background-color: #fffdfa;
+  }
+}
+
+@media (max-width: 768px) {
+  #root {
+    overflow: hidden;
+  }
+
+  body {
+    min-width: 0;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 1.7em;
+    margin-left: 0;
+    text-align: center;
+  }
 }
