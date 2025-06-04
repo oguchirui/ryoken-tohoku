@@ -45,7 +45,7 @@ const Header = () => {
       </h1>
       <nav className="nav">
         <ToAboutPageButton />
-        <button onClick={handleChangePassword}>パスワード再設定</button>
+        <button onClick={handleChangePassword}>パスワードの再設定</button>
       </nav>
     </header>
   );
