@@ -939,6 +939,9 @@ h1 {
     transform: rotate(45deg);
   }
 
+.change-page-button.to-record {
+  margin-bottom: 30px;
+}
 
 
 
@@ -954,9 +957,9 @@ h1 {
 
 
 
-
-
-
+.footer-buttons {
+  margin-bottom: 30px;
+}
 
 
 
