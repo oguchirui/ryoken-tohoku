@@ -136,12 +136,12 @@ const SearchFilter = () => {
   const customStyles = {
     container: (provided) => ({
       ...provided,
-      width: '120px',
     }),
     control: (provided, state) => ({
       ...provided,
       minHeight: '30px',
       height: '35px',
+      width: '120px',
       fontSize: '1em',
       padding: '0 px',
       borderRadius: '6px',
@@ -160,7 +160,6 @@ const SearchFilter = () => {
     }),
     indicatorsContainer: (provided) => ({
       ...provided,
-      height: '30px',
     }),
     dropdownIndicator: (provided) => ({
       ...provided,
@@ -178,7 +177,7 @@ const SearchFilter = () => {
     }),
     option: (provided, state) => ({
       ...provided,
-      fontSize: '1rm',
+      fontSize: '1em',
       padding: '8px',
       backgroundColor: state.isSelected
         ? '#fffdfa'
