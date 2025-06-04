@@ -495,7 +495,6 @@ const EditMap = () => {
         ref={mapRef}
         style={{
           width: '100%',
-          height: '700px',
         }}
         aria-label="地図"
       />

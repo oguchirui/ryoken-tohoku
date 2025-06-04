@@ -14,13 +14,13 @@
 }
 
 #root {
+  overflow: hidden;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   margin-top: 0;
   padding-top: 0;
   text-align: center;
-  overflow: hidden;
 }
 
 body {
@@ -53,7 +53,6 @@ button {
   background-color: antiquewhite;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   z-index: 500;
-  margin-bottom: 30px;
 }
 
 h1 {
@@ -116,6 +115,10 @@ h1 {
   align-items: center;
   flex-wrap: wrap;
   margin: 5px 10px;
+}
+
+.search-filter-item .search-filter-item {
+  margin: 0 10px;
 }
 
 .search-filter-count {
@@ -220,7 +223,7 @@ h1 {
 
 .map {
   width: 100%;
-  height: 500px;
+  height: 700px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   overflow: hidden;
@@ -387,7 +390,7 @@ h1 {
 }
 
 .change-page-button.to-record {
-  margin-bottom: 30px;
+  margin-bottom: 0;
 }
 
 /* 共通のアニメーション */
@@ -513,12 +516,13 @@ h1 {
 .footer-buttons {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .footer-buttons-item-left {
   margin: 30px;
   margin-right: 0;
+  margin-bottom: 0;
 }
 
 .footer-buttons-item-errors {
@@ -528,6 +532,7 @@ h1 {
 .footer-buttons-item-right {
   margin: 30px;
   margin-left: 0;
+  margin-bottom: 0;
 }
 
 .input-errors {
@@ -539,6 +544,7 @@ h1 {
 .input-errors p {
   margin-left: 5px;
   margin-right: 5px;
+  margin-bottom: 0.6em;
 }
 .password-check-container {
   height: 100%;
@@ -613,13 +619,8 @@ h1 {
   transition: transform 0.2s ease;
 }
 
-.about-page {
-  display: flex;
-}
-
 .toc-container {
-  position: sticky;
-  height: 100%;
+  position: fixed;
 }
 
 .toc {
@@ -668,8 +669,7 @@ h1 {
 }
 
 .about-section-container {
-  flex: 1;
-  margin-left: 40px;
+  margin-left: 260px;
   display: flex;
   flex-direction: column;
 }
@@ -814,14 +814,13 @@ h1 {
 
 @media (max-width: 768px) {
   #root {
-    overflow: hidden;
     padding: 1rem;
     padding-top: 0;
   }
 
   button {
-    padding: 0.4em 0.8em;
-    font-size: 0.6em;
+    padding: 0.4em 1em;
+    font-size: 0.8em;
     border-radius: 6px;
   }
 
@@ -837,10 +836,14 @@ h1 {
   }
 
   h2 {
-    font-size: 1em;
+    font-size: 1.2em;
   }
 
   h3 {
+    font-size: 1em;
+  }
+
+  p {
     font-size: 0.8em;
   }
 
@@ -853,8 +856,9 @@ h1 {
 
   .nav button {
     width: auto;
-    padding: 0.4em 0.8em;
+    padding: 0.4em 1em;
     border-radius: 6px;
+    margin-bottom: 0;
   }
 
   .search-filter {
@@ -863,16 +867,14 @@ h1 {
   }
 
   .search-filter-input {
-    height:24px;
+    height: 22px;
     width: 30px;
   }
 
-
-
-
-
-
-
+  .search-filter-row-reset button {
+    font-size: 0.6em;
+    padding: 0.4em 1em;
+  }
 
   .custom__control {
     font-size: 0.6em !important;
@@ -890,6 +892,62 @@ h1 {
     font-size: 0.6em !important;
     padding: 5px !important;
   }
+
+  .place-picker-container {
+    margin-bottom: 10px;
+  }
+
+  .place-picker {
+    width: 65%;
+  }
+
+  .map {
+    height: 675px;
+  }
+  
+  .map-and-contents {
+    height: 760px;
+  }
+
+  .home-map {
+    width: 100%;
+    height: 52%;
+    transition: height 0.2s ease-in-out;
+  }
+
+  .home-map.show {
+    height: 100%;
+  }
+
+  .contents {
+    width: 100%;
+    height: 327px;
+    margin: 0;
+    visibility: visible;
+    transform: translateY(250%);
+  }
+
+  .contents.show {
+    transform: translateY(118%);
+    height: 340px;
+  }
+
+  .contents-close-button {
+    left: 0
+  }
+  .contents-close-button::after {
+    transform: rotate(45deg);
+  }
+
+
+
+
+
+
+
+
+
+
 
 
 

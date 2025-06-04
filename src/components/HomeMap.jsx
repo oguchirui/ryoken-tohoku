@@ -184,7 +184,6 @@ const HomeMap = ({ handleShowContents }) => {
         className='map'
         ref={mapRef}
         aria-label="地図"
-        style={{ height: "700px" }}
       />
     </>
   );

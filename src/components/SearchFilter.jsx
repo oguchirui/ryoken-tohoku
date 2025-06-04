@@ -143,7 +143,7 @@ const SearchFilter = () => {
       height: '35px',
       width: '120px',
       fontSize: '1em',
-      padding: '0 px',
+      padding: '0px',
       borderRadius: '6px',
       border: '1px solid #F75A1A',
       transition: 'transform 0.2s ease, box-shadow 0.2s ease',

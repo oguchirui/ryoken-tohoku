@@ -4,10 +4,13 @@ import { useHeaderHeight } from "../context/HeaderHeightContext";
 const TableOfContents = ({ sections }) => {
   const headerHeight = useHeaderHeight();
 
+  const isMobile = window.innerWidth <= 768;
+  const marginTop = isMobile ? 15 : 30;
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const headerOffset = headerHeight + 30; // ヘッダーの高さと余白を考慮
+      const headerOffset = headerHeight + marginTop; // ヘッダーの高さと余白を考慮
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -37,7 +40,7 @@ const TableOfContents = ({ sections }) => {
   )
 
   return (
-    <div className="toc-container" style={{ top: `${headerHeight + 30}px` }}>
+    <div className="toc-container" style={{ top: `${headerHeight + marginTop}px` }}>
       <nav className="toc">
         <h2>目次</h2>
         {renderList(sections)}

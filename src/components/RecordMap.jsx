@@ -418,8 +418,7 @@ const RecordMap = () => {
         className='map'
         ref={mapRef}
         style={{
-          width: '100%',
-          height: '700px',
+          width: '100%'
         }}
         aria-label="地図"
       />

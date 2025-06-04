@@ -18,7 +18,11 @@ const Header = () => {
       if (headerRef.current) {
         const headerHeight = headerRef.current.offsetHeight;
         setHeaderHeight(headerHeight);
-        document.body.style.marginTop = `${headerHeight + 30}px`;
+
+        const isMobile = window.innerWidth <= 768;
+        const marginTop = isMobile ? 15 : 30
+
+        document.body.style.marginTop = `${headerHeight + marginTop}px`;
       }
     };
 
