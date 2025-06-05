@@ -154,3 +154,19 @@
   }
 }
 
+
+@media (max-width: 768px) {
+  .react-datepicker-wrapper {
+    height: 30px;
+  }
+
+  .react-datepicker__input-container {
+    height: 30px;
+  }
+
+  .custom-input-button {
+    height: 30px;
+    padding: 5.75px 1em;
+    font-size: 0.8em;
+  }
+}

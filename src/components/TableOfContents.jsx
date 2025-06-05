@@ -45,7 +45,7 @@ const TableOfContents = ({ sections }) => {
         <h2>目次</h2>
         {renderList(sections)}
       </nav>
-      <ToHomePageButton />
+      {isMobile || <ToHomePageButton />}
     </div>
   )
 };
