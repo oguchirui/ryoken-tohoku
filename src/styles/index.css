@@ -502,7 +502,6 @@ h1 {
 
 .place-input-description {
   margin-left: 20px;
-  margin-bottom: 0;
   text-align: left;
 }
 
@@ -764,6 +763,7 @@ h1 {
   z-index: 1000;
 }
 
+
 @media (hover: hover) {
   h1:hover {
     color: black;
@@ -823,6 +823,7 @@ h1 {
   }
 }
 
+
 @media (max-width: 768px) {
   #root {
     padding: 1rem;
@@ -831,7 +832,7 @@ h1 {
 
   button {
     padding: 0.4em 1em;
-    font-size: 0.8em;
+    font-size: 1em;
     border-radius: 6px;
   }
 
@@ -868,8 +869,8 @@ h1 {
 
   .nav button {
     width: auto;
-    font-size: 0.6em;
-    padding: 0.5em 1em;
+    font-size: 0.8em;
+    padding: 0.4em 1em;
     border-radius: 6px;
     margin-bottom: 0;
   }
@@ -887,7 +888,8 @@ h1 {
 
   .search-filter-row-reset button {
   padding: 5.75px 1em;
-}
+  font-size: 0.8em;
+  }
 
   .custom__control {
     font-size: 0.8em !important;
@@ -955,6 +957,18 @@ h1 {
     min-height: 90px;
   }
 
+  .contents-header h2 {
+    font-size: 1.4em;
+  }
+
+  .contents-item h3 {
+    font-size: 1.2em;
+  }
+
+  .contents-item p {
+    font-size: 1em;
+  }
+
   .change-page-button.to-record {
     margin-bottom: 70px;
   }
@@ -971,6 +985,10 @@ h1 {
   .place-input {
     width: 130px;
     height: 22.895px;
+    font-size: 0.8em;
+  }
+  
+  .date-place-item textarea {
     font-size: 0.8em;
   }
 
@@ -995,6 +1013,10 @@ h1 {
     margin-bottom: 70px;
   }
 
+  .about-page p {
+    font-size: 1em;
+  }
+
   .toc-container {
     position: static;
   }
@@ -1004,6 +1026,7 @@ h1 {
   }
 
   .toc h2 {
+    font-size: 1.4em;
     margin-top: 10px;
   }
 
@@ -1021,12 +1044,12 @@ h1 {
   }
 
   .heading.depth-1 {
-    font-size: 1.5em;
+    font-size: 1.7em;
     padding-left: 10px;
   }
 
   .heading.depth-2 {
-    font-size: 1.2em;
+    font-size: 1.4em;
     padding-left: 10px;
   }
 
