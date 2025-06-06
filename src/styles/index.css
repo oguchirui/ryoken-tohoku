@@ -231,6 +231,48 @@ h1 {
   overflow: hidden;
 }
 
+/* 地図・航空写真ボタン */
+.gm-style-mtc button {
+  font-size: 1.5em !important;
+  padding: 0 20px !important;
+  height: 35px !important;
+}
+
+/* コントロールボタン */
+.gm-control-active {
+  visibility: hidden;
+}
+
+/* フルスクリーンボタン */
+.gm-fullscreen-control {
+  width: 35px !important;
+  height: 35px !important;
+  top: 0 !important;
+  right: 0 !important;
+  visibility: visible;
+}
+
+.gm-fullscreen-control img {
+  height: 20px !important;
+}
+
+/* ストリートビューボタン */
+.gm-svpc {
+  width: 35px !important;
+  height: 35px !important;
+  top: 77px !important;
+  left: 5px !important;
+}
+
+.gm-svpc img {
+  height: 25px !important;
+}
+
+/* 右下の表示 */
+.gm-style-cc {
+  display: none;
+}
+
 .contents {
   width: 27%;
   margin: 20px 15px 25px;
@@ -918,6 +960,44 @@ h1 {
   .map {
     height: 675px;
   }
+
+  /* 地図・航空写真ボタン */
+  .gm-style-mtc button {
+    font-size: 1.2em !important;
+    padding: 0 15px !important;
+    height: 30px !important;
+  }
+
+  /* コントロールボタン */
+  .gm-control-active {
+    visibility: hidden;
+  }
+
+  /* フルスクリーンボタン */
+  .gm-fullscreen-control {
+    width: 30px !important;
+    height: 30px !important;
+    top: 0 !important;
+    right: 0 !important;
+    visibility: visible;
+  }
+
+  .gm-fullscreen-control img {
+    height: 15px !important;
+  }
+
+  /* ストリートビューボタン */
+  .gm-svpc {
+    width: 30px !important;
+    height: 30px !important;
+    top: 82px !important;
+    left: 10px !important;
+  }
+
+  .gm-svpc img {
+    height: 23px !important;
+  }
+
   
   .map-and-contents {
     height: 760px;
