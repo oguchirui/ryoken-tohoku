@@ -32,11 +32,11 @@ const AboutPage = () => {
           content: (
             <div>
               <p>
-                ホームページでは、ページ中央に表示されている地図上のピンを選択することで活動記録を閲覧できます。ピンに表示されている数字は、これまでの活動でその場所に行った回数を表しています。
+                ホームページでは、ページ中央に表示されている地図上のピンを選択することで活動記録を閲覧できます。ピンに表示されている数字は、これまでの活動でその場所に訪れた回数を表しています。
               </p>
               <img className="about-img" src="/howtoview/overview.png" alt="overview" />
               <p>
-                活動場所、活動日、活動内容が活動記録として表示されます。これまでに複数回その場所へ行ったことがある場合、日付の新しい順に活動記録が表示されます。活動場所横に表示されている「くの字」ボタンを選択すると、活動記録を閉じることができます。
+                活動場所、活動日、活動内容が活動記録として表示されます。これまでに複数回その場所へ訪れたことがある場合、日付の新しい順に活動記録が表示されます。活動場所横に表示されている「くの字」ボタンを選択すると、活動記録を閉じることができます。
               </p>
               <img className="about-img" src="/howtoview/showcontents.png" alt="showcontents" />
               <p>
@@ -44,7 +44,7 @@ const AboutPage = () => {
               </p>
               <img className="about-img" src="/howtoview/placepicker.png" alt="placepicer" />
               <p>
-                ピンの表示条件を変更することもできます。例えば、指定した年や都道府県の活動場所のみを表示させたり、指定した回数行ったことがある活動場所のみを表示させたりすることができます。
+                ピンの表示条件を変更することもできます。例えば、年や都道府県を指定したり、訪れた回数を指定してピンを表示させることができます。
               </p>
               <img className="about-img" src="/howtoview/searchfilter.png" alt="searchfilter" />
             </div>
@@ -61,11 +61,11 @@ const AboutPage = () => {
               </p>
               <img className="about-img" src="/howtorecord/torecordpage.png" alt="torecordpage" />
               <p>
-                活動記録の作成する際には、活動日、活動場所名、活動内容を入力してください。活動場所名は、以前行ったことがある場所の場合、地図上のオレンジ色のピンを選択することで自動的に入力されます。
+                活動記録の作成する際には、活動日、活動場所名、活動内容を入力してください。活動場所名は、以前訪れたことがある場所の場合、地図上に表示されているピンを選択することで自動的に入力されます。
               </p>
               <img className="about-img" src="/howtorecord/recordinput.png" alt="recordinput" />
               <p>
-                活動場所は、地図上にピンを立てることで選択してください。ホームページと同様に、「場所を検索」と表示されている検索バーに場所を入力することで、その場所を地図上に表示できます。以前行ったことがある場所の場合、地図上のオレンジ色のピンを選択してください。
+                活動場所は、地図上にピンを立てることで選択してください。ホームページと同様に、「場所を検索」と表示されている検索バーに場所を入力することで、その場所を地図上に表示できます。以前訪れたことがある場所の場合、地図上に表示されているピンを選択してください。
               </p>
               <img className="about-img" src="/howtorecord/recordmap.png" alt="recordmap" />
               <p>
@@ -140,7 +140,7 @@ const AboutPage = () => {
               </p>
               <img className="about-img" src="/changepassword/changebutton.png" alt="changebutton" />
               <p>
-                正しいパスワードを入力すると、新しいパスワードを入力する画面が表示されます。新しいパスワードを入力し、確認のため、新しいパスワードを再入力してください。
+                正しいパスワードを入力すると、新しいパスワードを入力する画面が表示されます。新しいパスワードを入力し、確認のため再入力してください。
               </p>
               <img className="about-img" src="/changepassword/newpassword.png" alt="newpassword" />
               <p>

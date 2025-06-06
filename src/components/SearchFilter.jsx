@@ -255,7 +255,7 @@ const SearchFilter = () => {
       <div className='search-filter-row-reset'>
         <div className='search-filter-count'>
           <div className='search-filter-item'>
-            <h3>行った回数：</h3>
+            <h3>訪れた回数：</h3>
             <AnimatedSelect
               name='type'
               options={getSelectOptions(options.types)}
