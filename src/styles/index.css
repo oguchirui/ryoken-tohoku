@@ -238,6 +238,11 @@ h1 {
   height: 35px !important;
 }
 
+/* 地形・ラベルボタン */
+.ssQIHO-checkbox-menu-item {
+  font-size: 1.5em !important;
+}
+
 /* コントロールボタン */
 .gm-control-active {
   visibility: hidden;
@@ -966,6 +971,11 @@ h1 {
     font-size: 1.2em !important;
     padding: 0 15px !important;
     height: 30px !important;
+  }
+
+  /* 地形・ラベルボタン */
+  .ssQIHO-checkbox-menu-item {
+    font-size: 1.2em !important;
   }
 
   /* コントロールボタン */
