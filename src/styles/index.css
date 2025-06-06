@@ -241,6 +241,7 @@ h1 {
 /* 地形・ラベルボタン */
 .ssQIHO-checkbox-menu-item {
   font-size: 1.5em !important;
+  height: 35px !important;
 }
 
 /* コントロールボタン */
@@ -976,6 +977,7 @@ h1 {
   /* 地形・ラベルボタン */
   .ssQIHO-checkbox-menu-item {
     font-size: 1.2em !important;
+    height: 30px !important;
   }
 
   /* コントロールボタン */
