@@ -112,7 +112,7 @@ const RecordMap = () => {
       }
 
       const pin = new PinElement({
-        scale: 1.5,
+        scale: 1.2,
         background: '#ffcc4d',
         borderColor: 'none',
         glyph: '',
@@ -123,14 +123,14 @@ const RecordMap = () => {
       const glyphDiv = document.createElement('div');
       glyphDiv.style.backgroundColor = '#fffdfa';
       glyphDiv.style.borderRadius = '50%';
-      glyphDiv.style.width = '28px';
-      glyphDiv.style.height = '28px';
+      glyphDiv.style.width = '22px';
+      glyphDiv.style.height = '22px';
       glyphDiv.style.display = 'flex';
       glyphDiv.style.alignItems = 'center';
       glyphDiv.style.justifyContent = 'center';
       glyphDiv.style.position = 'absolute';
-      glyphDiv.style.top = '6px';
-      glyphDiv.style.left = '6px';
+      glyphDiv.style.top = '4.5px';
+      glyphDiv.style.left = '5px';
       glyphDiv.style.zIndex = '2';
 
       pin.element.appendChild(glyphDiv);
@@ -190,7 +190,7 @@ const RecordMap = () => {
 
       filteredRecords.forEach((record) => {
         const pin = new PinElement({
-          scale: 1.5,
+          scale: 1.2,
           background: '#f75a1a',
           borderColor: 'none',
           glyph: '',
@@ -202,20 +202,20 @@ const RecordMap = () => {
         const glyphDiv = document.createElement('div');
         glyphDiv.style.backgroundColor = '#fffdfa';
         glyphDiv.style.borderRadius = '50%';
-        glyphDiv.style.width = '28px';
-        glyphDiv.style.height = '28px';
+        glyphDiv.style.width = '22px';
+        glyphDiv.style.height = '22px';
         glyphDiv.style.display = 'flex';
         glyphDiv.style.alignItems = 'center';
         glyphDiv.style.justifyContent = 'center';
         glyphDiv.style.position = 'absolute';
-        glyphDiv.style.top = '6px';
-        glyphDiv.style.left = '6px';
+        glyphDiv.style.top = '4.5px';
+        glyphDiv.style.left = '5px';
         glyphDiv.style.zIndex = '2';
 
         // 文字用の span を作る
         const glyphText = document.createElement('span');
         glyphText.textContent = `${record.name_count}`;
-        glyphText.style.fontSize = '1.8em';
+        glyphText.style.fontSize = '1.5em';
         glyphText.style.fontFamily = '"Kaisei Opti", serif';
         glyphText.style.color = '#474747';
         // 文字だけを少し上に移動
@@ -274,7 +274,7 @@ const RecordMap = () => {
           }
 
           const pin = new PinElement({
-            scale: 1.5,
+            scale: 1.2,
             background: '#ffcc4d',
             borderColor: 'none',
             glyph: '',
@@ -285,14 +285,14 @@ const RecordMap = () => {
           const glyphDiv = document.createElement('div');
           glyphDiv.style.backgroundColor = '#fffdfa';
           glyphDiv.style.borderRadius = '50%';
-          glyphDiv.style.width = '28px';
-          glyphDiv.style.height = '28px';
+          glyphDiv.style.width = '22px';
+          glyphDiv.style.height = '22px';
           glyphDiv.style.display = 'flex';
           glyphDiv.style.alignItems = 'center';
           glyphDiv.style.justifyContent = 'center';
           glyphDiv.style.position = 'absolute';
-          glyphDiv.style.top = '6px';
-          glyphDiv.style.left = '6px';
+          glyphDiv.style.top = '4.5px';
+          glyphDiv.style.left = '5px';
           glyphDiv.style.zIndex = '2';
 
           pin.element.appendChild(glyphDiv);
@@ -355,6 +355,8 @@ const RecordMap = () => {
                 placeholderText="日付を選択"
                 locale={ja}
                 dropdownMode="select"
+                // showMonthDropdown={true}
+                // showYearDropdown={true}
               />
             </div>
             <div className='date-place-item'>

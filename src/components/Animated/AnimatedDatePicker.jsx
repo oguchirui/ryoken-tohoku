@@ -11,9 +11,9 @@ const AnimatedDatePicker = ({
   onChange,
   placeholderText = '日付を選んでください',
   locale = ja,
+  dropdownMode = 'select',
   showMonthDropdown = false,
   showYearDropdown = false,
-  dropdownMode = 'select',
 }) => {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
