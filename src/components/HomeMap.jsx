@@ -153,7 +153,7 @@ const HomeMap = ({ handleShowContents }) => {
             marker.zIndex = 0;
             pin.element.classList.remove('pin-hovered');
           }, 200);
-        });
+        }, { passive: true });
 
         marker.addListener('gmp-click', () => {
           fetchClickedRecords(record.name).then((clickedRecords) => {

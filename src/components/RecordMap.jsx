@@ -163,7 +163,7 @@ const RecordMap = () => {
           marker.zIndex = 0;
           pin.element.classList.remove('pin-hovered');
         }, 200);
-      });
+      }, { passive: true });
 
       setLat(e.latLng.lat());
       setLng(e.latLng.lng());
@@ -258,7 +258,7 @@ const RecordMap = () => {
             marker.zIndex = 0;
             pin.element.classList.remove('pin-hovered');
           }, 200);
-        });
+        }, { passive: true });
 
         marker.addListener('gmp-click', () => {
           setPlaceName(record.name);
@@ -325,7 +325,7 @@ const RecordMap = () => {
               marker.zIndex = 0;
               pin.element.classList.remove('pin-hovered');
             }, 200);
-          });
+          }, { passive: true });
         });
 
         logMarkerRef.current.push(marker);
