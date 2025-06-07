@@ -69,8 +69,7 @@ const SearchFilter = () => {
       else if (key === 'month') label = `${v}月`;
       else if (key === 'day') label = `${v}日`;
       return { value: v, label };
-    }
-    );
+    });
 
   const getSelectValue = (key) => {
     const value = filterValues[key];
