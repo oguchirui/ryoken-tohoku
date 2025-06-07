@@ -234,6 +234,7 @@ h1 {
 /* 地図・航空写真ボタン */
 .gm-style-mtc button {
   font-size: 1.5em !important;
+  font-family: "Kaisei Opti", serif !important;
   padding: 0 20px !important;
   height: 35px !important;
 }
@@ -241,6 +242,7 @@ h1 {
 /* 地形・ラベルボタン */
 .ssQIHO-checkbox-menu-item {
   font-size: 1.5em !important;
+  font-family: "Kaisei Opti", serif !important;
   height: 35px !important;
 }
 
