@@ -97,7 +97,7 @@ const EditButton = (props) => {
                 <input
                   type="text"
                   autoComplete="username"
-                  value="ID"
+                  value="ryoken-tohoku"
                   hidden
                 />
 

@@ -70,7 +70,7 @@ const ChangePasswordModal = () => {
               <input
                 type="text"
                 autoComplete="username"
-                value="ID"
+                value="ryoken-tohoku"
                 hidden
               />
 
@@ -114,7 +114,7 @@ const ChangePasswordModal = () => {
               <input
                 type="text"
                 autoComplete="username"
-                value="ID"
+                value="ryoken-tohoku"
                 hidden
               />
 

@@ -59,7 +59,7 @@ const DeleteModal = () => {
               <input
                 type="text"
                 autoComplete="username"
-                value="ID"
+                value="ryoken-tohoku"
                 hidden
               />
 
