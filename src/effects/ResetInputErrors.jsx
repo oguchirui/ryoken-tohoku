@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useInputErrorsDispatch } from "../context/InputErrorsContext";
+import { useInputErrorsDispatch } from "@/contexts/InputErrorsContext";
 
 const ResetInputErrors = () => {
   const { pathname } = useLocation();

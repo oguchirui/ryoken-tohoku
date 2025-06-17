@@ -1,16 +1,16 @@
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { PlacePicker } from '@googlemaps/extended-component-library/react';
-import { fetchFilteredRecords } from '../supabaseFunctions';
-import { useMap } from '../context/MapContext';
+import { fetchFilteredRecords } from '@/api/supabaseFunctions';
+import { useMap } from '@/contexts/MapContext';
 import format from 'date-fns/format';
 import { ja } from 'date-fns/locale/ja';
-import AnimatedDatePicker from './Animated/AnimatedDatePicker';
+import AnimatedDatePicker from '@/components/customInputs/AnimatedDatePicker';
 import EditButton from './EditButton';
-import ToHomePageButton from './ToHomePageButton';
-import { useInputErrors } from '../context/InputErrorsContext';
+import ToHomePageButton from '@/components/changePageButtons/ToHomePageButton';
+import { useInputErrors } from '@/contexts/InputErrorsContext';
 
-const EditMap = () => {
+const EditPage = () => {
   const MAP_ID = import.meta.env.VITE_MAP_ID;
   const INITIAL_ADDRESS = '日本、〒980-0021 宮城県仙台市青葉区中央１丁目１';
 
@@ -533,4 +533,4 @@ const EditMap = () => {
   );
 };
 
-export default EditMap;
+export default EditPage;

@@ -1,8 +1,8 @@
-import { useMapDispatch } from "../context/MapContext";
-import { useDeleteModal, useDeleteModalDispatch } from "../context/DeleteModalContext";
+import { useMapDispatch } from "@/contexts/MapContext";
+import { useDeleteModal, useDeleteModalDispatch } from "@/contexts/DeleteModalContext";
 import { useState } from "react";
 import Modal from "./Modal";
-import { fetchPassword, deleteRecord, fetchClickedRecords } from "../supabaseFunctions";
+import { fetchPassword, deleteRecord, fetchClickedRecords } from "@/api/supabaseFunctions";
 
 const DeleteModal = () => {
   const [inputPassword, setInputPassword] = useState("");
@@ -61,6 +61,7 @@ const DeleteModal = () => {
                 autoComplete="username"
                 value="ryoken-tohoku"
                 hidden
+                readOnly
               />
 
               <input

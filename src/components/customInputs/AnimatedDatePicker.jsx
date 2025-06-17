@@ -2,9 +2,8 @@ import { useState, useRef } from 'react';
 import DatePicker from 'react-datepicker';
 import { format } from 'date-fns';
 import { ja } from 'date-fns/locale/ja';
-import CustomInputButton from './CustomInputButton';
 import 'react-datepicker/dist/react-datepicker.css';
-import '../../styles/date-picker.css';
+import '@/styles/date-picker.css';
 
 const AnimatedDatePicker = ({
   selected,

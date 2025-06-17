@@ -1,14 +1,15 @@
 import { APILoader } from '@googlemaps/extended-component-library/react'
-import { MapProvider } from './context/MapContext'
-import { ChangePasswordProvider } from './context/ChangePasswordContext'
-import { InputErrorsProvider } from './context/InputErrorsContext'
-import { HeaderHeightProvider } from './context/HeaderHeightContext'
+import { MapProvider } from '@/contexts/MapContext'
+import { ChangePasswordProvider } from '@/contexts/ChangePasswordContext'
+import { InputErrorsProvider } from '@/contexts/InputErrorsContext'
+import { HeaderHeightProvider } from '@/contexts/HeaderHeightContext'
+import { DeleteModalProvider } from '@/contexts/DeleteModalContext'
 import { BrowserRouter } from 'react-router-dom'
-import ScrollToTop from './components/ScrollToTop'
-import ResetInputErrors from './components/ResetInputErrors'
-import ChangePasswordModal from './components/ChangePasswordModal'
-import Header from './components/Header'
-import Router from './components/router/Router'
+import Header from '@/components/Header'
+import ChangePasswordModal from '@/components/modals/ChangePasswordModal'
+import ScrollToTop from '@/effects/ScrollToTop'
+import ResetInputErrors from '@/effects/ResetInputErrors'
+import Router from '@/router/Router'
 
 const App = () => {
   const API_KEY = import.meta.env.VITE_MAP_API_KEY;
@@ -19,13 +20,15 @@ const App = () => {
         <ChangePasswordProvider>
           <InputErrorsProvider>
             <HeaderHeightProvider>
-              <BrowserRouter>
-                <ScrollToTop />
-                <ResetInputErrors />
-                <ChangePasswordModal />
-                <Header />
-                <Router />
-              </BrowserRouter>
+              <DeleteModalProvider>
+                <BrowserRouter>
+                  <Header />
+                  <ChangePasswordModal />
+                  <ScrollToTop />
+                  <ResetInputErrors />
+                  <Router />
+                </BrowserRouter>
+              </DeleteModalProvider>
             </HeaderHeightProvider>
           </InputErrorsProvider>
         </ChangePasswordProvider>

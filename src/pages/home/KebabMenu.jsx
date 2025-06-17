@@ -1,5 +1,5 @@
-import { useMapDispatch } from "../context/MapContext";
-import { useDeleteModalDispatch } from "../context/DeleteModalContext";
+import { useMapDispatch } from "@/contexts/MapContext";
+import { useDeleteModalDispatch } from "@/contexts/DeleteModalContext";
 import { useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 

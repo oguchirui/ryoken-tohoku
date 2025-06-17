@@ -1,5 +1,5 @@
-import ToHomePageButton from "./ToHomePageButton";
-import { useHeaderHeight } from "../context/HeaderHeightContext";
+import ToHomePageButton from "@/components/changePageButtons/ToHomePageButton";
+import { useHeaderHeight } from "@/contexts/HeaderHeightContext";
 
 const TableOfContents = ({ sections }) => {
   const headerHeight = useHeaderHeight();

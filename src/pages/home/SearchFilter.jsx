@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useMapDispatch } from "../context/MapContext";
-import { useDeleteModal } from '../context/DeleteModalContext';
-import { fetchUniqueYears, fetchUniquePrefectures } from "../supabaseFunctions";
-import AnimatedSelect from "./Animated/AnimatedSelect"
+import { useMapDispatch } from "@/contexts/MapContext";
+import { useDeleteModal } from '@/contexts/DeleteModalContext';
+import { fetchUniqueYears, fetchUniquePrefectures } from "@/api/supabaseFunctions";
+import AnimatedSelect from "@/components/customInputs/AnimatedSelect";
 
 const SearchFilter = () => {
   const mapDispatch = useMapDispatch();

@@ -1,7 +1,7 @@
-import { useChangePassword, useChangePasswordDispatch } from "../context/ChangePasswordContext";
+import { useChangePassword, useChangePasswordDispatch } from "@/contexts/ChangePasswordContext";
 import { useState } from "react";
 import Modal from "./Modal";
-import { fetchPassword, updatePassword } from "../supabaseFunctions";
+import { fetchPassword, updatePassword } from "@/api/supabaseFunctions";
 
 const ChangePasswordModal = () => {
   const [inputPassword, setInputPassword] = useState("");
@@ -72,6 +72,7 @@ const ChangePasswordModal = () => {
                 autoComplete="username"
                 value="ryoken-tohoku"
                 hidden
+                readOnly
               />
 
               <input
@@ -116,6 +117,7 @@ const ChangePasswordModal = () => {
                 autoComplete="username"
                 value="ryoken-tohoku"
                 hidden
+                readOnly
               />
 
               <input

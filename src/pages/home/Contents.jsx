@@ -1,4 +1,4 @@
-import { useMap } from "../context/MapContext";
+import { useMap } from "@/contexts/MapContext";
 import KebabMenu from "./KebabMenu";
 
 const Contents = ({ handleHideContents }) => {

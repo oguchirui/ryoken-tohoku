@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { useChangePasswordDispatch } from '../context/ChangePasswordContext';
-import { useSetHeaderHeight } from '../context/HeaderHeightContext';
-import ToAboutPageButton from "./ToAboutPageButton";
+import { useChangePasswordDispatch } from '@/contexts/ChangePasswordContext';
+import { useSetHeaderHeight } from '@/contexts/HeaderHeightContext';
+import ToAboutPageButton from "@/components/changePageButtons/ToAboutPageButton";
 
 const Header = () => {
   const headerRef = useRef(null);

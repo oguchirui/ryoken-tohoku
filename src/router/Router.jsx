@@ -1,8 +1,8 @@
 import { useRoutes } from "react-router-dom";
-import HomePage from "../HomePage";
-import RecordPage from "../RecordPage";
-import EditPage from "../EditPage";
-import AboutPage from "../AboutPage";
+import HomePage from "@/pages/home/HomePage";
+import RecordPage from "@/pages/record/RecordPage";
+import EditPage from "@/pages/edit/EditPage";
+import AboutPage from "@/pages/about/AboutPage";
 
 const Router = () => {
   const routingConfig = [

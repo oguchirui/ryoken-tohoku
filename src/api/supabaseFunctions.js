@@ -1,5 +1,6 @@
 import { supabase } from "./supabase.js";
 
+// 指定された条件に基づいてレコードを取得する関数
 export const fetchFilteredRecords = async (year, month, day, prefecture, type, numArr) => {
   let query = supabase
     .from('activity_logs_count')
@@ -46,6 +47,7 @@ export const fetchFilteredRecords = async (year, month, day, prefecture, type, n
   return data;
 };
 
+// クリックされたレコードを取得する関数
 export const fetchClickedRecords = async (name) => {
   const { data, error } = await supabase
     .from('activity_logs_count')
@@ -61,6 +63,7 @@ export const fetchClickedRecords = async (name) => {
   return data;
 };
 
+// ユニークな年を取得する関数
 export const fetchUniqueYears = async () => {
   const { data, error } = await supabase
     .from('unique_years')
@@ -72,6 +75,7 @@ export const fetchUniqueYears = async () => {
   return data;
 };
 
+// ユニークな都道府県を取得する関数
 export const fetchUniquePrefectures = async () => {
   const { data, error } = await supabase
     .from('unique_prefectures')
@@ -83,6 +87,7 @@ export const fetchUniquePrefectures = async () => {
   return data;
 };
 
+// パスワードを取得する関数
 export const fetchPassword = async () => {
   const { data, error } = await supabase
     .from("password_table")
@@ -95,6 +100,7 @@ export const fetchPassword = async () => {
   return data.password;
 };
 
+// パスワードを更新する関数
 export const updatePassword = async (newPassword) => {
   const { error } = await supabase
     .from("password_table")
@@ -106,6 +112,7 @@ export const updatePassword = async (newPassword) => {
   }
 };
 
+// レコードを挿入する関数
 export const insertRecord = async (record) => {
   const { error } = await supabase
     .from('activity_logs')
@@ -116,6 +123,7 @@ export const insertRecord = async (record) => {
   }
 };
 
+// レコードを更新する関数
 export const updateRecord = async (newRecord, oldRecordId) => {
   const { error } = await supabase
     .from('activity_logs')
@@ -127,6 +135,7 @@ export const updateRecord = async (newRecord, oldRecordId) => {
   }
 };
 
+// レコードを削除する関数
 export const deleteRecord = async (oldRecordId) => {
   const { error } = await supabase
     .from('activity_logs')

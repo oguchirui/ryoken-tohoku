@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useInputErrorsDispatch } from "../context/InputErrorsContext";
-import Modal from "./Modal";
-import { fetchPassword, updateRecord } from "../supabaseFunctions";
+import { useInputErrorsDispatch } from "@/contexts/InputErrorsContext";
+import Modal from "@/components/modals/Modal";
+import { fetchPassword, updateRecord } from "@/api/supabaseFunctions";
 
 const EditButton = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -99,6 +99,7 @@ const EditButton = (props) => {
                   autoComplete="username"
                   value="ryoken-tohoku"
                   hidden
+                  readOnly
                 />
 
                 <input

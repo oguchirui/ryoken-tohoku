@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { PlacePicker } from '@googlemaps/extended-component-library/react';
-import { fetchFilteredRecords, fetchClickedRecords } from '../supabaseFunctions';
-import { useMap, useMapDispatch } from '../context/MapContext';
-import { useDeleteModal } from '../context/DeleteModalContext';
+import { fetchFilteredRecords, fetchClickedRecords } from '@/api/supabaseFunctions';
+import { useMap, useMapDispatch } from '@/contexts/MapContext';
+import { useDeleteModal } from '@/contexts/DeleteModalContext';
 
 const HomeMap = ({ handleShowContents }) => {
   const MAP_ID = import.meta.env.VITE_MAP_ID;

@@ -1,4 +1,4 @@
-import { useMapDispatch } from "../context/MapContext";
+import { useMapDispatch } from "@/contexts/MapContext";
 import { useNavigate } from "react-router-dom";
 
 const ToRecordPageButton = () => {
