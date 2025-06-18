@@ -1,5 +1,7 @@
 import { supabase } from "./supabase.js";
 
+// supabase関連の関数を定義
+
 // 指定された条件に基づいてレコードを取得する関数
 export const fetchFilteredRecords = async (year, month, day, prefecture, type, numArr) => {
   let query = supabase

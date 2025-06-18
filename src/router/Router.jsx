@@ -5,29 +5,31 @@ import EditPage from "@/pages/edit/EditPage";
 import AboutPage from "@/pages/about/AboutPage";
 
 const Router = () => {
+  // ルートパスに対応するコンポーネントを設定
   const routingConfig = [
     {
       path: "/",
-      element: <HomePage />,
+      element: <HomePage />, // トップページ
     },
     {
       path: "/home",
-      element: <HomePage />,
+      element: <HomePage />, // /homeもトップページにする場合
     },
     {
       path: "/record",
-      element: <RecordPage />,
+      element: <RecordPage />, // 活動記録ページ
     },
     {
       path: "/edit",
-      element: <EditPage />,
+      element: <EditPage />, // 編集ページ
     },
     {
       path: "/about",
-      element: <AboutPage />,
-    }
+      element: <AboutPage />, // サイトについてページ
+    },
   ];
 
+  // useRoutesで設定したルーティング情報をもとにレンダリング
   const routing = useRoutes(routingConfig);
 
   return routing;

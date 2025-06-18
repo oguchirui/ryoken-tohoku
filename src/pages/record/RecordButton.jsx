@@ -4,16 +4,28 @@ import { useInputErrorsDispatch } from "@/contexts/InputErrorsContext";
 import Modal from "@/components/modals/Modal";
 import { fetchPassword, insertRecord } from "@/api/supabaseFunctions";
 
+/**
+ * RecordButtonコンポーネント
+ * 
+ * ユーザーが「記録する」ボタンを押すと、
+ * 入力内容の簡易バリデーション後にパスワード入力のモーダルを表示し、
+ * 正しいパスワード入力で記録データをデータベースに登録する。
+ * 
+ * @param {object} props - 各入力項目の値や入力済みフラグ
+ * @returns JSX.Element
+ */
 const RecordButton = (props) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [inputPassword, setInputPassword] = useState("");
-  const [isCorrect, setIsCorrect] = useState(true);
-  const [modalStep, setModalStep] = useState(0); // modalStep: 0 - パスワード入力, 1 - 完了メッセージ
+  const [isModalOpen, setIsModalOpen] = useState(false); // モーダルの開閉状態
+  const [inputPassword, setInputPassword] = useState(""); // パスワード入力欄の状態
+  const [isCorrect, setIsCorrect] = useState(true); // パスワード正誤判定
+  const [modalStep, setModalStep] = useState(0); // モーダルのステップ管理（0: パスワード入力、1: 完了メッセージ）
 
   const navigate = useNavigate();
 
+  // 入力エラー用のコンテキストディスパッチ（エラーメッセージ管理）
   const inputErrorsDispatch = useInputErrorsDispatch();
 
+  // 日付情報からrecordオブジェクトを作成
   const date = new Date(props.date);
   const record = {
     year: date.getFullYear(),
@@ -26,9 +38,10 @@ const RecordButton = (props) => {
     description: props.description,
   };
 
-  // モーダル閉じて状態リセット（バツボタン用）
+  // モーダルを閉じて内部状態をリセット
   const closeModalOnly = () => {
     setIsModalOpen(false);
+    // モーダル閉じた後に状態をクリア（アニメーションや遅延対応のためsetTimeout）
     setTimeout(() => {
       setInputPassword("");
       setIsCorrect(true);
@@ -36,14 +49,15 @@ const RecordButton = (props) => {
     }, 200);
   };
 
-  // 閉じるボタン押下時に状態リセット＆/homeへ遷移
+  // モーダル閉じてホーム画面に戻る
   const closeModalAndNavigate = () => {
     closeModalOnly();
     navigate("/");
   };
 
+  // 「記録する」ボタン押下時の処理
   const openModal = () => {
-    // 未入力の項目をチェック
+    // 入力チェック：未入力の項目があればエラーメッセージをセットして処理終了
     const errors = [];
     if (!props.isDateEntered) errors.push("活動日が未選択です。");
     if (!props.isPlaceNameEntered) errors.push("活動場所名が未入力です。");
@@ -55,23 +69,25 @@ const RecordButton = (props) => {
       return;
     }
 
-    inputErrorsDispatch({ type: "setErrors", payload: [] }) // エラーなしの場合はリセット
+    // エラーなしならエラーメッセージをクリアしモーダルを開く
+    inputErrorsDispatch({ type: "setErrors", payload: [] });
     setIsModalOpen(true);
   };
 
-  // パスワードチェックと記録処理
+  // パスワードをチェックし、正しければ記録を挿入し完了画面へ
   const handleCheckPassword = async () => {
-    const correctPassword = await fetchPassword();
+    const correctPassword = await fetchPassword();  // 正しいパスワードを取得
     if (inputPassword === correctPassword) {
-      await insertRecord(record);
-      setModalStep(1);
+      await insertRecord(record);  // 記録をDBに挿入
+      setModalStep(1);             // 完了画面へ切り替え
     } else {
-      setIsCorrect(false);
+      setIsCorrect(false);         // 間違い表示
     }
   };
 
   return (
     <div>
+      {/* 記録開始ボタン */}
       <button
         className="change-page-button"
         onClick={openModal}
@@ -79,8 +95,10 @@ const RecordButton = (props) => {
         記録する
       </button>
 
+      {/* モーダル */}
       <Modal isOpen={isModalOpen} onClose={closeModalOnly}>
         <div className="password-check-container">
+          {/* ステップ0: パスワード入力画面 */}
           {modalStep === 0 && (
             <div className="password-check">
               <h2>パスワードを入力してください。</h2>
@@ -90,6 +108,7 @@ const RecordButton = (props) => {
                   handleCheckPassword();
                 }}
               >
+                {/* 自動入力用ダミーinput（ブラウザの補完用） */}
                 <input
                   type="text"
                   autoComplete="username"
@@ -98,6 +117,7 @@ const RecordButton = (props) => {
                   readOnly
                 />
 
+                {/* パスワード入力 */}
                 <input
                   type="password"
                   autoComplete="current-password"
@@ -105,10 +125,11 @@ const RecordButton = (props) => {
                   value={inputPassword}
                   onChange={(e) => {
                     setInputPassword(e.target.value);
-                    setIsCorrect(true); // パスワード入力時にエラーメッセージをリセット
+                    setIsCorrect(true); // 入力時はエラー非表示に戻す
                   }}
                 />
 
+                {/* パスワードエラー表示 */}
                 {!isCorrect && (
                   <p>
                     パスワードが間違っています。
@@ -125,6 +146,7 @@ const RecordButton = (props) => {
             </div>
           )}
 
+          {/* ステップ1: 記録完了画面 */}
           {modalStep === 1 && (
             <div className="password-check">
               <h2>記録が完了しました。</h2>

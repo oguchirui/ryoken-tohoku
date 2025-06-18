@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
+// Homeページに遷移するボタンコンポーネント
+
 const ToHomePageButton = () => {
   const navigate = useNavigate();
 

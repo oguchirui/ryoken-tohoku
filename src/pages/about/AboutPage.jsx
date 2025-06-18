@@ -1,7 +1,17 @@
 import TableOfContents from "./TableOfContents";
 import AboutSections from "./AboutSections";
 
+/**
+ * AboutPage コンポーネント
+ * 
+ * 東北大学旅行研究会の活動記録サイトの「このサイトについて」ページ。
+ * 目次 + 各セクション（はじめに、使い方、パスワード管理など）を構成。
+ * 
+ * @returns {JSX.Element} Aboutページ全体のレイアウト
+ */
+
 const AboutPage = () => {
+  // 各セクションの構造と内容を定義（目次・本文共通で使用）
   const sections = [
     {
       id: '1',

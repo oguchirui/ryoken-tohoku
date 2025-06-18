@@ -4,13 +4,26 @@ import { useDeleteModal } from '@/contexts/DeleteModalContext';
 import { fetchUniqueYears, fetchUniquePrefectures } from "@/api/supabaseFunctions";
 import AnimatedSelect from "@/components/customInputs/AnimatedSelect";
 
+/**
+ * SearchFilterコンポーネント
+ * 
+ * 活動記録の地図上ピン表示条件を指定するフィルターUIを提供。
+ * - 年、月、日、都道府県、訪問回数での絞り込みが可能
+ * - 回数の絞り込みは「ちょうど」か「範囲を指定」で入力方式を切り替え
+ * - 外部APIから年・都道府県の選択肢を取得
+ * - フィルター条件の変更をMapContextにディスパッチして状態を共有
+ * - 削除モーダル状態が変わった場合に選択肢を再取得し直す
+ * 
+ * @returns {JSX.Element} フィルターUI
+ */
 const SearchFilter = () => {
   const mapDispatch = useMapDispatch();
-
   const { hasDeleted } = useDeleteModal();
 
+  // 訪問回数の初期範囲（0～最大値）
   const INITIAL_NUM_ARR = [0, Number.MAX_SAFE_INTEGER];
 
+  // 選択肢の状態（年、月、日、都道府県、タイプ）
   const [options, setOptions] = useState({
     years: [],
     months: [],
@@ -19,6 +32,7 @@ const SearchFilter = () => {
     types: [],
   });
 
+  // フィルターの選択値
   const [filterValues, setFilterValues] = useState({
     year: 'すべて',
     month: 'すべて',
@@ -28,22 +42,29 @@ const SearchFilter = () => {
     numArr: INITIAL_NUM_ARR,
   });
 
+  // 訪問回数入力用テキストボックスの中身（文字列）
   const [numInputs, setNumInputs] = useState(['', '']);
 
-  // 初期化
+  // 初期化処理・選択肢設定（hasDeleted変化時も再取得）
   useEffect(() => {
+    // 月・日は固定で作成
     const months = ['すべて', ...Array.from({ length: 12 }, (_, i) => `${i + 1}`)];
     const days = ['すべて', ...Array.from({ length: 31 }, (_, i) => `${i + 1}`)];
     const types = ['すべて', 'ちょうど', '範囲を指定'];
 
+    // 年の選択肢をAPIから取得し設定
     fetchUniqueYears().then((objs) => {
       const years = ['すべて', ...objs.map(obj => String(obj.year))];
       setOptions((prev) => ({ ...prev, years }));
     });
+
+    // 都道府県の選択肢をAPIから取得し設定
     fetchUniquePrefectures().then((objs) => {
       const prefectures = ['すべて', ...objs.map(obj => obj.prefecture)];
       setOptions((prev) => ({ ...prev, prefectures }));
     });
+
+    // 月、日、タイプの選択肢を設定
     setOptions((prev) => ({
       ...prev,
       months,
@@ -52,6 +73,7 @@ const SearchFilter = () => {
     }));
   }, [hasDeleted]);
 
+  // filterValuesの変更があったらMapContextにディスパッチする
   useEffect(() => {
     mapDispatch({
       type: 'filter',
@@ -59,6 +81,10 @@ const SearchFilter = () => {
     });
   }, [filterValues, mapDispatch]);
 
+  /**
+   * 選択肢配列からReact Select用のオプション配列に変換
+   * 'すべて'はそのまま表示し、それ以外は単位（年・月・日）を付加する
+   */
   const getSelectOptions = (arr, key) =>
     arr.map((v) => {
       if (v === 'すべて') {
@@ -71,6 +97,9 @@ const SearchFilter = () => {
       return { value: v, label };
     });
 
+  /**
+   * 現在のfilterValuesからReact Selectのvalue形式に変換
+   */
   const getSelectValue = (key) => {
     const value = filterValues[key];
     let label = value;
@@ -84,6 +113,10 @@ const SearchFilter = () => {
     return { value, label };
   };
 
+  /**
+   * React SelectのonChangeイベントハンドラ
+   * 指定されたキーの値をfilterValuesにセット
+   */
   const onReactSelectChange = (key, selectedOption) => {
     setFilterValues((prev) => ({
       ...prev,
@@ -91,11 +124,16 @@ const SearchFilter = () => {
     }));
   };
 
+  // typeの変更時は訪問回数の入力欄とfilter値をリセット
   useEffect(() => {
     setNumInputs(['', '']);
     setFilterValues((prev) => ({ ...prev, numArr: INITIAL_NUM_ARR }));
   }, [filterValues.type]);
 
+  /**
+   * 訪問回数の入力欄変更ハンドラ
+   * 数字か空文字のみ受け付け、filterValuesのnumArrを更新
+   */
   const onNumInputChange = (index, val) => {
     if (val === '' || /^\d*$/.test(val)) {
       setNumInputs((prev) => {
@@ -109,8 +147,10 @@ const SearchFilter = () => {
         setFilterValues((prev) => {
           let newNumArr = [...prev.numArr];
           if (prev.type === 'ちょうど') {
+            // 「ちょうど」の場合は両端同じ値にする
             newNumArr = [numVal, numVal];
           } else if (prev.type === '範囲を指定') {
+            // 範囲指定の場合は対応するインデックスにセット
             newNumArr[index] = numVal;
           }
           return { ...prev, numArr: newNumArr };
@@ -119,6 +159,9 @@ const SearchFilter = () => {
     }
   };
 
+  /**
+   * フィルターをすべてリセットするボタンの処理
+   */
   const resetFilters = () => {
     const resetValues = {
       year: 'すべて',
@@ -132,6 +175,7 @@ const SearchFilter = () => {
     setNumInputs(['', '']);
   };
 
+  // React Select用のカスタムスタイル
   const customStyles = {
     container: (provided) => ({
       ...provided,
@@ -188,6 +232,7 @@ const SearchFilter = () => {
     }),
   };
 
+  // React Select用のカスタムテーマ
   const customTheme = (theme) => ({
     ...theme,
     colors: {

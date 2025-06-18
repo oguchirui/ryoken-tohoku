@@ -1,3 +1,6 @@
+/* グローバルCSSスタイル */
+
+/* PC用 */
 :root {
   font-family: "Kaisei Opti", serif;
   font-weight: 400;
@@ -813,7 +816,7 @@ h1 {
   z-index: 1000;
 }
 
-
+/* モバイル用ホバー */
 @media (hover: hover) {
   h1:hover {
     color: black;
@@ -873,7 +876,7 @@ h1 {
   }
 }
 
-
+/* モバイル用 */
 @media (max-width: 768px) {
   #root {
     padding: 1rem;

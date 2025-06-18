@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
+// Aboutページに遷移するボタンコンポーネント
+
 const ToAboutPageButton = () => {
   const navigate = useNavigate();
 
