@@ -1,12 +1,35 @@
-# React + Vite
+# 東北大学 旅行研究会 活動記録サイト
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 概要
 
-Currently, two official plugins are available:
+本サイトは、**東北大学旅行研究会**の活動内容を記録・閲覧するためのWebアプリケーションです。  
+過去の活動を振り返ったり、今後の計画を立てる際の参考として活用できます。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 活動記録の作成・編集・削除機能
+- 地図上で活動場所をピン表示し、訪問回数などでフィルタリング可能
+- パスワードによるアクセス制御で安全に運用
+- モバイル・PC対応のレスポンシブデザイン
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 主な機能
+
+- **活動記録の閲覧**  
+  地図上のピンをクリックして過去の活動を確認可能。  
+- **活動記録の作成・編集・削除**  
+  サークル長・副サークル長がパスワード認証のもと記録を管理。  
+- **検索・フィルター機能**  
+  年、月、日、都道府県、訪問回数でピンの表示を絞り込み可能。  
+- **パスワード再設定機能**  
+  サークル長・副サークル長の交代時にパスワードの変更を推奨。
+
+詳しい使い方については本サイトの「このサイトについて」をご覧ください。
+
+
+## 技術スタック
+
+- **フロントエンド**: React  
+- **ルーティング**: React Router  
+- **地図表示**: Google Maps API (@googlemaps/extended-component-library/react)  
+- **状態管理**: React Context API  
+- **バックエンド**: Supabase (PostgreSQLベースのBaaS)  
+- **デプロイ**: Vercel
