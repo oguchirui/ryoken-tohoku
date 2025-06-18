@@ -28,8 +28,7 @@
 ## 技術スタック
 
 - **フロントエンド**: React  
-- **ルーティング**: React Router  
-- **地図表示**: Google Maps API (@googlemaps/extended-component-library/react)  
-- **状態管理**: React Context API  
 - **バックエンド**: Supabase (PostgreSQLベースのBaaS)  
+- **ルーティング**: React Router  
+- **地図表示**: Google Maps API (@googlemaps/extended-component-library/react)   
 - **デプロイ**: Vercel
