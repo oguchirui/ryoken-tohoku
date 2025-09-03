@@ -1,0 +1,29 @@
+name: Daily Website Ping
+
+on:
+  schedule:
+    # 毎日9:00 UTC (日本時間18:00) に実行
+    - cron: '0 0 * * *'
+  # 手動実行も可能にする
+  workflow_dispatch:
+
+jobs:
+  ping-website:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Ping website
+        run: |
+          echo "Pinging website..."
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://ryoken-tohoku.vercel.app/)
+          echo "Response code: $response"
+          
+          if [ $response -eq 200 ]; then
+            echo "✅ Website is accessible"
+          else
+            echo "❌ Website returned code: $response"
+            exit 1
+          fi
