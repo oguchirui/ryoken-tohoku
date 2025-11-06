@@ -134,6 +134,13 @@ const EditPage = () => {
 
       pin.element.style.filter = 'drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1))';
 
+      // wrapper を作成（アニメーションの基準）
+      const wrapper = document.createElement('div');
+      wrapper.style.position = 'relative';
+      wrapper.style.cursor = 'pointer';
+      wrapper.classList.add('pin-drop-animation');
+      wrapper.appendChild(pin.element);
+
       const glyphDiv = document.createElement('div');
       glyphDiv.style.backgroundColor = '#fffdfa';
       glyphDiv.style.borderRadius = '50%';
@@ -147,35 +154,33 @@ const EditPage = () => {
       glyphDiv.style.left = '5px';
       glyphDiv.style.zIndex = '2';
 
-      pin.element.appendChild(glyphDiv);
-
-      pin.element.classList.add('pin-drop-animation');
+      wrapper.appendChild(glyphDiv);
 
       clickMarker = new AdvancedMarkerElement({
         position: e.latLng,
         map: mapInstance.current,
-        content: pin.element,
+        content: wrapper,
         zIndex: 2,
       });
 
-      pin.element.addEventListener('mouseenter', () => {
-        marker.zIndex = 1;
-        pin.element.classList.add('pin-hovered');
+      wrapper.addEventListener('mouseenter', () => {
+        clickMarker.zIndex = 1;
+        wrapper.classList.add('pin-hovered');
       });
-      pin.element.addEventListener('mouseleave', () => {
-        marker.zIndex = 0;
-        pin.element.classList.remove('pin-hovered');
+      wrapper.addEventListener('mouseleave', () => {
+        clickMarker.zIndex = 0;
+        wrapper.classList.remove('pin-hovered');
       });
 
       // スマホ対応：タップしたら浮き上がる
-      pin.element.addEventListener('touchstart', () => {
-        marker.zIndex = 1000;
-        pin.element.classList.add('pin-hovered');
+      wrapper.addEventListener('touchstart', () => {
+        clickMarker.zIndex = 1000;
+        wrapper.classList.add('pin-hovered');
 
         // 1秒後に元に戻す（必要に応じて時間調整）
         setTimeout(() => {
-          marker.zIndex = 0;
-          pin.element.classList.remove('pin-hovered');
+          clickMarker.zIndex = 0;
+          wrapper.classList.remove('pin-hovered');
         }, 200);
       }, { passive: true });
 
@@ -213,6 +218,13 @@ const EditPage = () => {
 
         pin.element.style.filter = 'drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1))';
 
+        // wrapper を作成（アニメーションの基準）
+        const wrapper = document.createElement('div');
+        wrapper.style.position = 'relative';
+        wrapper.style.cursor = 'pointer';
+        wrapper.classList.add('pin-drop-animation');
+        wrapper.appendChild(pin.element);
+
         const glyphDiv = document.createElement('div');
         glyphDiv.style.backgroundColor = '#fffdfa';
         glyphDiv.style.borderRadius = '50%';
@@ -239,38 +251,35 @@ const EditPage = () => {
         // glyphText を glyphDiv に追加
         glyphDiv.appendChild(glyphText);
 
-        // pin.element に追加
-        pin.element.style.position = 'relative'; // 親に relative 忘れずに
-        pin.element.appendChild(glyphDiv);
-
-        pin.element.classList.add('pin-drop-animation');
+        // glyphDiv を wrapper に追加
+        wrapper.appendChild(glyphDiv);
 
         const marker = new AdvancedMarkerElement({
           map: mapInstance.current,
           position: { lat: record.lat, lng: record.lng },
-          content: pin.element,
+          content: wrapper,
           gmpClickable: true,
           zIndex: 0,
         });
 
-        pin.element.addEventListener('mouseenter', () => {
+        wrapper.addEventListener('mouseenter', () => {
           marker.zIndex = 1;
-          pin.element.classList.add('pin-hovered');
+          wrapper.classList.add('pin-hovered');
         });
-        pin.element.addEventListener('mouseleave', () => {
+        wrapper.addEventListener('mouseleave', () => {
           marker.zIndex = 0;
-          pin.element.classList.remove('pin-hovered');
+          wrapper.classList.remove('pin-hovered');
         });
 
         // スマホ対応：タップしたら浮き上がる
-        pin.element.addEventListener('touchstart', () => {
+        wrapper.addEventListener('touchstart', () => {
           marker.zIndex = 1000;
-          pin.element.classList.add('pin-hovered');
+          wrapper.classList.add('pin-hovered');
 
           // 1秒後に元に戻す（必要に応じて時間調整）
           setTimeout(() => {
             marker.zIndex = 0;
-            pin.element.classList.remove('pin-hovered');
+            wrapper.classList.remove('pin-hovered');
           }, 200);
         }, { passive: true });
 
@@ -296,6 +305,13 @@ const EditPage = () => {
 
           pin.element.style.filter = 'drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1))';
 
+          // wrapper を作成（アニメーションの基準）
+          const wrapper = document.createElement('div');
+          wrapper.style.position = 'relative';
+          wrapper.style.cursor = 'pointer';
+          wrapper.classList.add('pin-drop-animation');
+          wrapper.appendChild(pin.element);
+
           const glyphDiv = document.createElement('div');
           glyphDiv.style.backgroundColor = '#fffdfa';
           glyphDiv.style.borderRadius = '50%';
@@ -309,35 +325,33 @@ const EditPage = () => {
           glyphDiv.style.left = '5px';
           glyphDiv.style.zIndex = '2';
 
-          pin.element.appendChild(glyphDiv);
-
-          pin.element.classList.add('pin-drop-animation');
+          wrapper.appendChild(glyphDiv);
 
           clickMarker = new AdvancedMarkerElement({
             position: latLng,
             map: mapInstance.current,
-            content: pin.element,
+            content: wrapper,
             zIndex: 2,
           });
 
-          pin.element.addEventListener('mouseenter', () => {
-            marker.zIndex = 1;
-            pin.element.classList.add('pin-hovered');
+          wrapper.addEventListener('mouseenter', () => {
+            clickMarker.zIndex = 1;
+            wrapper.classList.add('pin-hovered');
           });
-          pin.element.addEventListener('mouseleave', () => {
-            marker.zIndex = 0;
-            pin.element.classList.remove('pin-hovered');
+          wrapper.addEventListener('mouseleave', () => {
+            clickMarker.zIndex = 0;
+            wrapper.classList.remove('pin-hovered');
           });
 
           // スマホ対応：タップしたら浮き上がる
-          pin.element.addEventListener('touchstart', () => {
-            marker.zIndex = 1000;
-            pin.element.classList.add('pin-hovered');
+          wrapper.addEventListener('touchstart', () => {
+            clickMarker.zIndex = 1000;
+            wrapper.classList.add('pin-hovered');
 
             // 1秒後に元に戻す（必要に応じて時間調整）
             setTimeout(() => {
-              marker.zIndex = 0;
-              pin.element.classList.remove('pin-hovered');
+              clickMarker.zIndex = 0;
+              wrapper.classList.remove('pin-hovered');
             }, 200);
           }, { passive: true });
         });
@@ -360,6 +374,13 @@ const EditPage = () => {
 
         pin.element.style.filter = 'drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1))';
 
+        // wrapper を作成（アニメーションの基準）
+        const wrapper = document.createElement('div');
+        wrapper.style.position = 'relative';
+        wrapper.style.cursor = 'pointer';
+        wrapper.classList.add('pin-drop-animation');
+        wrapper.appendChild(pin.element);
+
         const glyphDiv = document.createElement('div');
         glyphDiv.style.backgroundColor = '#fffdfa';
         glyphDiv.style.borderRadius = '50%';
@@ -373,35 +394,33 @@ const EditPage = () => {
         glyphDiv.style.left = '5px';
         glyphDiv.style.zIndex = '2';
 
-        pin.element.appendChild(glyphDiv);
-
-        pin.element.classList.add('pin-drop-animation');
+        wrapper.appendChild(glyphDiv);
 
         clickMarker = new AdvancedMarkerElement({
           position: { lat: oldLat, lng: oldLng },
           map: mapInstance.current,
-          content: pin.element,
+          content: wrapper,
           zIndex: 2,
         });
 
-        pin.element.addEventListener('mouseenter', () => {
-          marker.zIndex = 1;
-          pin.element.classList.add('pin-hovered');
+        wrapper.addEventListener('mouseenter', () => {
+          clickMarker.zIndex = 1;
+          wrapper.classList.add('pin-hovered');
         });
-        pin.element.addEventListener('mouseleave', () => {
-          marker.zIndex = 0;
-          pin.element.classList.remove('pin-hovered');
+        wrapper.addEventListener('mouseleave', () => {
+          clickMarker.zIndex = 0;
+          wrapper.classList.remove('pin-hovered');
         });
 
         // スマホ対応：タップしたら浮き上がる
-        pin.element.addEventListener('touchstart', () => {
-          marker.zIndex = 1000;
-          pin.element.classList.add('pin-hovered');
+        wrapper.addEventListener('touchstart', () => {
+          clickMarker.zIndex = 1000;
+          wrapper.classList.add('pin-hovered');
 
           // 1秒後に元に戻す（必要に応じて時間調整）
           setTimeout(() => {
-            marker.zIndex = 0;
-            pin.element.classList.remove('pin-hovered');
+            clickMarker.zIndex = 0;
+            wrapper.classList.remove('pin-hovered');
           }, 200);
         }, { passive: true });
       };
